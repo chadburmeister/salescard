@@ -1,0 +1,1210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SalesCard — The verified sales record that follows every rep.</title>
+<meta name="description" content="Upload your last 8 quarters. Get a verified SalesCard. Stack up against thousands of reps. Get found by recruiters who pay attention to numbers, not adjectives." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue: #3478C0;
+    --blue-dk: #1E5A9C;
+    --blue-lt: #5294E0;
+    --blue-bg: #EFF6FF;
+    --black: #0F0F0F;
+    --ink: #111827;
+    --gray-900: #111827;
+    --gray-700: #374151;
+    --gray-500: #6B7280;
+    --gray-400: #9CA3AF;
+    --gray-300: #D1D5DB;
+    --gray-200: #E5E7EB;
+    --gray-100: #F3F4F6;
+    --gray-50: #F9FAFB;
+    --white: #FFFFFF;
+    --gold: #F5B739;
+    --gold-dk: #C98E18;
+    --green: #10B981;
+    --green-dk: #047857;
+    --red: #EF4444;
+    --cream: #F8F5EE;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; max-width:100%; }
+  .container{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .container-tight{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ============ NAV ============ */
+  nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height: 68px;
+  }
+  .logo{
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+  }
+  .logo .l-blue{ color: var(--blue); }
+  .logo .l-green{ color: var(--green); }
+  .nav-links{
+    display:flex;
+    gap: 32px;
+    align-items:center;
+  }
+  .nav-links a{
+    color: var(--gray-700);
+    font-weight: 500;
+    font-size: 14.5px;
+  }
+  .nav-links a:hover{ color: var(--blue); }
+  @media (max-width: 720px){
+    .nav-links .desktop-only{ display:none; }
+  }
+  .btn{
+    display: inline-flex;
+    align-items:center;
+    gap: 8px;
+    background: var(--blue);
+    color: white;
+    font-weight: 600;
+    font-size: 14.5px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border:none;
+    cursor: pointer;
+    transition: transform .15s ease, background .15s ease, box-shadow .2s ease;
+    text-decoration: none;
+  }
+  .btn:hover{ background: var(--blue-dk); transform: translateY(-1px); box-shadow: 0 10px 25px -10px rgba(52,120,192,.6); }
+  .btn-lg{ font-size: 16px; padding: 16px 28px; }
+  .btn-xl{ font-size: 17px; padding: 18px 32px; font-weight: 700; }
+  .btn-ghost{ background:transparent; color: var(--gray-700); padding: 10px 14px; }
+  .btn-ghost:hover{ background: var(--gray-100); color: var(--ink); transform:none; box-shadow:none; }
+  .btn-dark{ background: var(--black); color: white; }
+  .btn-dark:hover{ background:#1F2937; box-shadow: 0 10px 25px -10px rgba(0,0,0,.4); }
+
+  /* ============ HERO ============ */
+  .hero{
+    position: relative;
+    padding: 64px 0 80px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(52,120,192,0.10), transparent 70%),
+      radial-gradient(40% 30% at 80% 30%, rgba(245,183,57,0.08), transparent 70%);
+    z-index: -1;
+  }
+  .eyebrow{
+    display: inline-flex;
+    align-items:center;
+    gap: 6px;
+    color: var(--blue);
+    background: var(--blue-bg);
+    border: 1px solid #DCE9F8;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 22px;
+    letter-spacing: 0.02em;
+  }
+  .eyebrow .dot{ width:6px;height:6px;border-radius:50%;background:var(--blue);display:inline-block; }
+  h1.hero-h1{
+    font-size: clamp(40px, 6vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    font-weight: 900;
+    color: var(--ink);
+    margin: 0 0 22px;
+    max-width: 920px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h1.hero-h1 .h1-gray{ color: var(--gray-500); }
+  .hero-sub{
+    color: var(--gray-700);
+    font-size: clamp(16px, 1.6vw, 19px);
+    line-height: 1.55;
+    max-width: 720px;
+    margin: 0 auto 38px;
+  }
+  .hero-cta{
+    display:flex;
+    justify-content:center;
+    gap: 14px;
+    flex-wrap:wrap;
+    margin-bottom: 16px;
+  }
+  .trust{
+    color: var(--gray-500);
+    font-size: 13.5px;
+    display:inline-flex;
+    align-items:center;
+    gap: 16px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .trust span{ display:inline-flex; align-items:center; gap:6px; }
+  .trust svg{ flex-shrink:0; }
+
+  /* ============ HERO CARD ============ */
+  .hero-card-wrap{
+    margin: 56px auto 0;
+    max-width: 480px;
+    perspective: 1500px;
+  }
+  .hero-card{
+    transform: rotateX(8deg) rotateY(-4deg);
+    transition: transform .4s ease;
+    filter: drop-shadow(0 30px 40px rgba(15,15,15,0.18));
+  }
+  .hero-card:hover{
+    transform: rotateX(2deg) rotateY(-1deg) translateY(-4px);
+  }
+
+  /* ============ SECTION SHARED ============ */
+  section{ padding: 96px 0; }
+  section.tight{ padding: 64px 0; }
+  .section-eyebrow{
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    text-align:center;
+  }
+  h2.section-h2{
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    font-weight: 800;
+    text-align: center;
+    margin: 0 auto 18px;
+    max-width: 760px;
+  }
+  .section-sub{
+    color: var(--gray-700);
+    font-size: 18px;
+    text-align:center;
+    max-width: 640px;
+    margin: 0 auto 56px;
+  }
+
+  /* ============ PROBLEM STRIP (logo bar style) ============ */
+  .problem-strip{
+    background: var(--black);
+    color: white;
+    padding: 28px 0;
+  }
+  .problem-strip .container{
+    display:flex; align-items:center; justify-content:center; gap: 28px; flex-wrap: wrap;
+  }
+  .problem-strip .stat{
+    color: var(--gray-400);
+    font-size: 14px;
+  }
+  .problem-strip .stat b{
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .problem-strip .divider{ color: var(--gray-700); }
+
+  /* ============ PROBLEM SECTION ============ */
+  .problem-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 880px){ .problem-grid{ grid-template-columns: 1fr; } }
+  .prob-card{
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 16px;
+    padding: 32px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .prob-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 24px 40px -20px rgba(15,15,15,0.12);
+  }
+  .prob-icon{
+    width: 44px; height: 44px;
+    background: var(--blue-bg);
+    color: var(--blue);
+    border-radius: 12px;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom: 16px;
+  }
+  .prob-card h3{
+    font-size: 19px;
+    margin: 0 0 10px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .prob-card p{
+    color: var(--gray-700);
+    margin: 0;
+    font-size: 15.5px;
+  }
+
+  /* ============ HOW IT WORKS ============ */
+  .how-bg{ background: var(--gray-50); }
+  .steps{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 880px){ .steps{ grid-template-columns: 1fr; } }
+  .step{
+    background: white;
+    border-radius: 16px;
+    padding: 36px;
+    border: 1px solid var(--gray-200);
+    position: relative;
+  }
+  .step-num{
+    width: 36px; height: 36px;
+    background: var(--black);
+    color: var(--gold);
+    border-radius: 999px;
+    display:flex; align-items:center; justify-content:center;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    margin-bottom: 18px;
+  }
+  .step h3{
+    font-size: 19px;
+    margin: 0 0 8px;
+    font-weight: 700;
+  }
+  .step p{
+    color: var(--gray-700);
+    margin: 0;
+    font-size: 15px;
+  }
+  .step-meta{
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: var(--blue);
+    background: var(--blue-bg);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+
+  /* ============ BENEFITS (alt rows) ============ */
+  .benefit-row{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  .benefit-row:last-child{ margin-bottom: 0; }
+  .benefit-row.reverse{
+    direction: rtl;
+  }
+  .benefit-row.reverse > *{ direction: ltr; }
+  @media (max-width: 880px){
+    .benefit-row, .benefit-row.reverse{
+      grid-template-columns: 1fr;
+      gap: 28px;
+      direction: ltr;
+    }
+  }
+  .benefit-text h3{
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    margin: 0 0 14px;
+  }
+  .benefit-text p{
+    color: var(--gray-700);
+    font-size: 17px;
+    margin: 0 0 14px;
+  }
+  .benefit-text ul{
+    list-style: none;
+    margin: 16px 0 0;
+    padding: 0;
+  }
+  .benefit-text li{
+    display: flex; gap: 10px;
+    color: var(--gray-700);
+    font-size: 15.5px;
+    margin-bottom: 8px;
+  }
+  .benefit-text li svg{ flex-shrink:0; margin-top: 4px; color: var(--blue); }
+  .benefit-visual{
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 20px;
+    padding: 28px;
+    aspect-ratio: 4/3;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+    position: relative;
+  }
+  .benefit-tag{
+    display: inline-block;
+    background: var(--blue-bg);
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+
+  /* ============ OFFER STACK ============ */
+  .stack-bg{ background: var(--black); color: white; }
+  .stack-bg h2.section-h2{ color: white; }
+  .stack-bg .section-eyebrow{ color: var(--gold); }
+  .stack-bg .section-sub{ color: var(--gray-400); }
+  .stack-card{
+    max-width: 760px;
+    margin: 0 auto;
+    background: #161922;
+    border: 1px solid #2A2F3B;
+    border-radius: 24px;
+    padding: 40px 44px;
+    box-shadow: 0 50px 80px -30px rgba(0,0,0,0.5);
+  }
+  .stack-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 18px 0;
+    border-bottom: 1px solid #2A2F3B;
+    gap: 16px;
+  }
+  .stack-item:last-of-type{ border-bottom: 0; }
+  .stack-label{
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    flex: 1;
+  }
+  .stack-check{
+    width: 22px; height: 22px;
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--green);
+    border-radius: 999px;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink: 0;
+  }
+  .stack-value{
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--gray-400);
+    font-size: 14.5px;
+    white-space: nowrap;
+  }
+  .stack-value.free{ color: var(--green); font-weight: 700; }
+  .stack-total{
+    margin-top: 16px;
+    padding: 22px 28px;
+    border-radius: 14px;
+    background: linear-gradient(90deg, rgba(52,120,192,0.10), rgba(245,183,57,0.10));
+    border: 1px solid #2A2F3B;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .stack-total .label{ font-size: 14px; color: var(--gray-400); }
+  .stack-total .crossed{
+    color: var(--gray-500);
+    text-decoration: line-through;
+    font-weight: 600;
+    font-size: 16px;
+    margin-right: 6px;
+  }
+  .stack-total .your-price{
+    font-weight: 900;
+    font-size: 30px;
+    color: white;
+    letter-spacing: -0.02em;
+  }
+  .stack-total .forever{
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .stack-cta{
+    text-align:center;
+    margin-top: 32px;
+  }
+  .stack-risk{
+    color: var(--gray-400);
+    font-size: 14px;
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  /* ============ FAQ ============ */
+  .faq{
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  details.faq-item{
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 14px;
+    margin-bottom: 12px;
+    padding: 20px 24px;
+    transition: border-color .2s ease;
+  }
+  details.faq-item[open]{
+    border-color: var(--blue);
+    background: var(--gray-50);
+  }
+  details.faq-item summary{
+    list-style: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16.5px;
+    color: var(--ink);
+    display:flex; align-items:center; justify-content:space-between; gap: 16px;
+  }
+  details.faq-item summary::-webkit-details-marker{ display:none; }
+  details.faq-item summary::after{
+    content:"+";
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1;
+    transition: transform .2s ease;
+    width: 22px; text-align: center;
+  }
+  details.faq-item[open] summary::after{ content:"−"; }
+  details.faq-item p{
+    margin: 14px 0 0;
+    color: var(--gray-700);
+    font-size: 15.5px;
+    line-height: 1.6;
+  }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta{
+    background: linear-gradient(180deg, var(--white) 0%, var(--blue-bg) 100%);
+    text-align:center;
+    padding: 100px 0;
+  }
+  .final-cta h2{
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    font-weight: 900;
+    margin: 0 0 18px;
+  }
+  .final-cta p{
+    color: var(--gray-700);
+    font-size: 18px;
+    max-width: 580px;
+    margin: 0 auto 36px;
+  }
+
+  /* ============ FOOTER ============ */
+  footer{
+    background: var(--black);
+    color: var(--gray-400);
+    padding: 56px 0 36px;
+    font-size: 14px;
+  }
+  .foot-grid{
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 44px;
+  }
+  @media (max-width: 720px){ .foot-grid{ grid-template-columns: 1fr 1fr; } }
+  footer h4{
+    color: white;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 14px;
+    font-weight: 700;
+  }
+  footer ul{ list-style:none; padding:0; margin:0; }
+  footer li{ margin-bottom: 8px; }
+  footer a:hover{ color: white; }
+  .foot-bot{
+    border-top: 1px solid #1F2937;
+    padding-top: 28px;
+    display:flex; justify-content:space-between; gap: 16px; flex-wrap:wrap;
+  }
+  .foot-logo{
+    font-weight: 900;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .foot-logo .l-blue{ color: var(--blue-lt); }
+  .foot-logo .l-green{ color: var(--green); }
+
+  /* ============ CARD ANATOMY callouts ============ */
+  .anatomy{
+    position: relative;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .anatomy-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  @media (max-width: 880px){ .anatomy-grid{ grid-template-columns: 1fr; gap: 32px; } }
+  .callout-list{ list-style:none; padding:0; margin:0; }
+  .callout-list li{
+    padding: 16px 18px;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-left: 3px solid var(--blue);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+  .callout-list li b{ color: var(--blue); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- =================== NAV =================== -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="logo"><span class="l-blue">Sales</span><span class="l-green">Card</span></a>
+    <div class="nav-links">
+      <a href="#how" class="desktop-only">How it works</a>
+      <a href="#card" class="desktop-only">The card</a>
+      <a href="#faq" class="desktop-only">FAQ</a>
+      <a href="#signin" class="btn-ghost">Sign in</a>
+      <a href="#signup" class="btn">Claim my card</a>
+    </div>
+  </div>
+</nav>
+
+<!-- =================== HERO =================== -->
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow"><span class="dot"></span>Built for SDRs · BDRs · AEs</span>
+    <h1 class="hero-h1">
+      Your sales career.<br>
+      <span class="h1-gray">Finally on the back of a card.</span>
+    </h1>
+    <p class="hero-sub">
+      Upload your last 8 quarters in 90 seconds. Get a verified, 1&ndash;100 SalesCard Score. See exactly how you stack up against thousands of SDRs, BDRs, and AEs — and put real numbers in front of recruiters who scroll past adjectives.
+    </p>
+    <div class="hero-cta">
+      <a href="#signup" class="btn btn-xl">Claim my SalesCard &rarr;</a>
+    </div>
+    <div class="trust">
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Free forever
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        No credit card
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        90 seconds to your card
+      </span>
+    </div>
+
+    <!-- THE CARD -->
+    <div class="hero-card-wrap">
+      <svg class="hero-card" viewBox="0 0 460 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SalesCard for Morgan Lee, ELITE 92">
+        <!-- slab -->
+        <rect x="0" y="0" width="460" height="640" rx="18" fill="#DDDCD3" stroke="#B8B6AC" stroke-width="2"/>
+        <!-- card body -->
+        <rect x="14" y="14" width="432" height="612" rx="6" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="0.5"/>
+        <!-- top tier stripe -->
+        <rect x="14" y="14" width="432" height="9" fill="#10B981"/>
+        <!-- grading bar bg -->
+        <rect x="14" y="23" width="432" height="124" fill="#0F0F0F"/>
+
+        <!-- left text block -->
+        <text x="30" y="44" font-family="Inter" font-size="11" font-weight="700" fill="#F5B739" letter-spacing="0.5">2024 SALESCARD VERIFIED · SERIES 1</text>
+        <text x="30" y="66" font-family="Inter" font-size="15" font-weight="900" fill="#FFFFFF">#SC MORGAN LEE</text>
+        <!-- sub-grades 2x2 -->
+        <g font-family="Inter" font-size="11" font-weight="700">
+          <text x="30" y="90" fill="#B8B8B8" letter-spacing="0.4">PIPELINE</text>
+          <text x="116" y="90" fill="#FFFFFF">9.4</text>
+          <text x="150" y="90" fill="#B8B8B8" letter-spacing="0.4">WIN RATE</text>
+          <text x="232" y="90" fill="#FFFFFF">9.0</text>
+          <text x="30" y="112" fill="#B8B8B8" letter-spacing="0.4">QUOTA</text>
+          <text x="116" y="112" fill="#FFFFFF">9.6</text>
+          <text x="150" y="112" fill="#B8B8B8" letter-spacing="0.4">TENURE</text>
+          <text x="232" y="112" fill="#FFFFFF">8.8</text>
+        </g>
+        <text x="30" y="136" font-family="JetBrains Mono, monospace" font-size="10" fill="#888888">0024 9201</text>
+
+        <!-- mid score panel -->
+        <rect x="285" y="34" width="78" height="102" fill="#10B981"/>
+        <text x="324" y="84" font-family="Inter" font-size="38" font-weight="900" fill="#0F0F0F" text-anchor="middle">92</text>
+        <text x="324" y="110" font-family="Inter" font-size="11" font-weight="900" fill="#0F0F0F" text-anchor="middle" letter-spacing="0.8">ELITE</text>
+
+        <!-- right VERIFIED panel -->
+        <rect x="370" y="34" width="60" height="102" fill="#F5B739"/>
+        <text x="400" y="56" font-family="Inter" font-size="9" font-weight="900" fill="#0F0F0F" text-anchor="middle" letter-spacing="0.6">VERIFIED</text>
+        <text x="400" y="94" font-family="Inter" font-size="28" font-weight="900" fill="#0F0F0F" text-anchor="middle">10</text>
+        <text x="400" y="120" font-family="Inter" font-size="7" font-weight="900" fill="#0F0F0F" text-anchor="middle" letter-spacing="0.5">AUTOGRAPH</text>
+
+        <!-- brand top-left of body -->
+        <text x="30" y="184" font-family="Inter" font-size="22" font-weight="900">
+          <tspan fill="#3478C0">Sales</tspan><tspan fill="#10B981">Card</tspan>
+        </text>
+        <text x="30" y="204" font-family="Inter" font-size="10" font-weight="800" fill="#6B7280" letter-spacing="1.5">CHROME · VERIFIED</text>
+
+        <!-- VER stamp top-right -->
+        <circle cx="408" cy="190" r="26" fill="#10B981" stroke="#0F0F0F" stroke-width="2"/>
+        <text x="408" y="184" font-family="Inter" font-size="10" font-weight="900" fill="#0F0F0F" text-anchor="middle">VER</text>
+        <text x="408" y="200" font-family="Inter" font-size="13" font-weight="900" fill="#0F0F0F" text-anchor="middle">92</text>
+
+        <!-- photo backdrop -->
+        <rect x="30" y="220" width="400" height="290" fill="#F5F7FB"/>
+
+        <!-- photo silhouette -->
+        <circle cx="230" cy="320" r="52" fill="#2A3B4F"/>
+        <path d="M 130 510 C 130 430, 180 400, 230 400 C 280 400, 330 430, 330 510 Z" fill="#2A3B4F"/>
+
+        <!-- LinkedIn signature line -->
+        <g transform="translate(30, 522)">
+          <rect width="20" height="20" rx="3" fill="#0A66C2"/>
+          <text x="10" y="14" font-family="Inter" font-size="11" font-weight="900" fill="white" text-anchor="middle">in</text>
+        </g>
+        <text x="60" y="538" font-family="Inter" font-size="14" font-weight="600" fill="#1F2937" font-style="italic">linkedin.com/in/morgan-lee</text>
+
+        <!-- nameplate -->
+        <rect x="14" y="566" width="432" height="60" fill="#0F0F0F"/>
+        <rect x="14" y="566" width="432" height="6" fill="#10B981"/>
+        <text x="230" y="600" font-family="Inter" font-size="22" font-weight="900" fill="#FFFFFF" text-anchor="middle">MORGAN LEE</text>
+        <text x="230" y="618" font-family="Inter" font-size="11" font-weight="900" fill="#F5B739" text-anchor="middle" letter-spacing="2">SENIOR AE</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- =================== PROBLEM STRIP =================== -->
+<div class="problem-strip">
+  <div class="container">
+    <span class="stat">Every rep says they're <b>top 10%</b>.</span>
+    <span class="divider">·</span>
+    <span class="stat">Hiring managers believe <b>none of them</b>.</span>
+    <span class="divider">·</span>
+    <span class="stat">Your numbers <b>reset at every job</b>.</span>
+    <span class="divider">·</span>
+    <span class="stat">There's no <b>portable scoreboard</b> for sales.</span>
+  </div>
+</div>
+
+<!-- =================== PROBLEM =================== -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">The problem</div>
+    <h2 class="section-h2">Resumes are stories. Cards are stats.</h2>
+    <p class="section-sub">
+      Eight quarters of $11M closed becomes "top performer" on a resume — and recruiters scroll past. Your real numbers deserve a real scoreboard.
+    </p>
+    <div class="problem-grid">
+      <div class="prob-card">
+        <div class="prob-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+        </div>
+        <h3>Adjectives, not numbers</h3>
+        <p>"Top performer," "President's Club," "consistently exceeded quota." Everyone says it. No one can prove it.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+        </div>
+        <h3>Your record resets every move</h3>
+        <p>Switch companies, switch CRMs, switch managers. Eight quarters of work disappears into a one-line resume bullet.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Recruiters can't find you</h3>
+        <p>The top 10% of reps are buried in the same LinkedIn searches as everyone else. Without a number, you're noise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== HOW IT WORKS =================== -->
+<section id="how" class="how-bg">
+  <div class="container">
+    <div class="section-eyebrow">How it works</div>
+    <h2 class="section-h2">90 seconds to your verified card.</h2>
+    <p class="section-sub">No CRM access. No employer involvement. Just you, your LinkedIn, and your numbers.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Sign in with LinkedIn</h3>
+        <p>We auto-fill your title, company, dates worked, and any public attainment percentages. You won't type the same things twice.</p>
+        <span class="step-meta">~ 15 seconds</span>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Upload 8 quarters of stats</h3>
+        <p>Closed-won $, quota %, pipeline $, win rate, deal size, AI agents managed. Snapshot a screen or paste numbers. Done.</p>
+        <span class="step-meta">~ 60 seconds</span>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Get your SalesCard</h3>
+        <p>1–100 score. Tier badge. Peer percentile. A public URL you control. Verification requests sent with two clicks.</p>
+        <span class="step-meta">~ 15 seconds</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== THE CARD ANATOMY =================== -->
+<section id="card">
+  <div class="container">
+    <div class="section-eyebrow">What's on your card</div>
+    <h2 class="section-h2">Every number that matters. Verified.</h2>
+    <p class="section-sub">Front shows who you are. Back shows what you've done — quarter by quarter, eight straight.</p>
+    <div class="anatomy">
+      <div class="anatomy-grid">
+        <!-- mini card -->
+        <div>
+          <svg viewBox="0 0 460 640" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 20px 30px rgba(15,15,15,0.15)); width:100%;">
+            <rect x="0" y="0" width="460" height="640" rx="18" fill="#DDDCD3" stroke="#B8B6AC" stroke-width="2"/>
+            <rect x="14" y="14" width="432" height="612" rx="6" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="0.5"/>
+            <rect x="14" y="14" width="432" height="9" fill="#10B981"/>
+            <rect x="14" y="23" width="432" height="124" fill="#0F0F0F"/>
+            <text x="30" y="44" font-family="Inter" font-size="11" font-weight="700" fill="#F5B739" letter-spacing="0.5">2024 SALESCARD VERIFIED · SERIES 1</text>
+            <text x="30" y="66" font-family="Inter" font-size="15" font-weight="900" fill="#FFFFFF">#SC MORGAN LEE</text>
+            <g font-family="Inter" font-size="11" font-weight="700">
+              <text x="30" y="90" fill="#B8B8B8" letter-spacing="0.4">PIPELINE</text><text x="116" y="90" fill="#FFFFFF">9.4</text>
+              <text x="150" y="90" fill="#B8B8B8" letter-spacing="0.4">WIN RATE</text><text x="232" y="90" fill="#FFFFFF">9.0</text>
+              <text x="30" y="112" fill="#B8B8B8" letter-spacing="0.4">QUOTA</text><text x="116" y="112" fill="#FFFFFF">9.6</text>
+              <text x="150" y="112" fill="#B8B8B8" letter-spacing="0.4">TENURE</text><text x="232" y="112" fill="#FFFFFF">8.8</text>
+            </g>
+            <rect x="285" y="34" width="78" height="102" fill="#10B981"/>
+            <text x="324" y="84" font-family="Inter" font-size="38" font-weight="900" fill="#0F0F0F" text-anchor="middle">92</text>
+            <text x="324" y="110" font-family="Inter" font-size="11" font-weight="900" fill="#0F0F0F" text-anchor="middle" letter-spacing="0.8">ELITE</text>
+            <rect x="370" y="34" width="60" height="102" fill="#F5B739"/>
+            <text x="400" y="56" font-family="Inter" font-size="9" font-weight="900" fill="#0F0F0F" text-anchor="middle" letter-spacing="0.6">VERIFIED</text>
+            <text x="400" y="94" font-family="Inter" font-size="28" font-weight="900" fill="#0F0F0F" text-anchor="middle">10</text>
+            <text x="400" y="120" font-family="Inter" font-size="7" font-weight="900" fill="#0F0F0F" text-anchor="middle" letter-spacing="0.5">AUTOGRAPH</text>
+            <text x="30" y="184" font-family="Inter" font-size="22" font-weight="900"><tspan fill="#3478C0">Sales</tspan><tspan fill="#10B981">Card</tspan></text>
+            <text x="30" y="204" font-family="Inter" font-size="10" font-weight="800" fill="#6B7280" letter-spacing="1.5">CHROME · VERIFIED</text>
+            <circle cx="408" cy="190" r="26" fill="#10B981" stroke="#0F0F0F" stroke-width="2"/>
+            <text x="408" y="184" font-family="Inter" font-size="10" font-weight="900" fill="#0F0F0F" text-anchor="middle">VER</text>
+            <text x="408" y="200" font-family="Inter" font-size="13" font-weight="900" fill="#0F0F0F" text-anchor="middle">92</text>
+            <rect x="30" y="220" width="400" height="290" fill="#F5F7FB"/>
+            <circle cx="230" cy="320" r="52" fill="#2A3B4F"/>
+            <path d="M 130 510 C 130 430, 180 400, 230 400 C 280 400, 330 430, 330 510 Z" fill="#2A3B4F"/>
+            <g transform="translate(30, 522)"><rect width="20" height="20" rx="3" fill="#0A66C2"/><text x="10" y="14" font-family="Inter" font-size="11" font-weight="900" fill="white" text-anchor="middle">in</text></g>
+            <text x="60" y="538" font-family="Inter" font-size="14" font-weight="600" fill="#1F2937" font-style="italic">linkedin.com/in/morgan-lee</text>
+            <rect x="14" y="566" width="432" height="60" fill="#0F0F0F"/>
+            <rect x="14" y="566" width="432" height="6" fill="#10B981"/>
+            <text x="230" y="600" font-family="Inter" font-size="22" font-weight="900" fill="#FFFFFF" text-anchor="middle">MORGAN LEE</text>
+            <text x="230" y="618" font-family="Inter" font-size="11" font-weight="900" fill="#F5B739" text-anchor="middle" letter-spacing="2">SENIOR AE</text>
+          </svg>
+        </div>
+        <ul class="callout-list">
+          <li><b>Tier badge.</b> A color-coded grade everyone can read at a glance. Gold (95+), Green (90–94), Blue (80–89), Red (&lt;80).</li>
+          <li><b>1–100 SalesCard Score.</b> A single number, role-normalized, peer-weighted, verified.</li>
+          <li><b>4 sub-grades.</b> Pipeline, Win Rate, Quota, Tenure. Each scored 1–10. Like Beckett, for closers.</li>
+          <li><b>VERIFIED 10 panel.</b> Manager- or peer-verified. The whole point.</li>
+          <li><b>Public LinkedIn link.</b> Your card lives on a URL you can drop in any DM, email, or job app.</li>
+          <li><b>Back of the card.</b> Eight quarters of closed-won, quota %, pipeline, deal size, agents managed — plus a scout report.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== BENEFITS =================== -->
+<section class="how-bg">
+  <div class="container">
+    <div class="section-eyebrow">Why reps put their stats in</div>
+    <h2 class="section-h2">Built for you. Not your manager.</h2>
+    <p class="section-sub">Four things you cannot get any other way.</p>
+
+    <div class="benefit-row">
+      <div class="benefit-text">
+        <div class="benefit-tag">Get found</div>
+        <h3>Recruiters who pay attention to numbers, not adjectives.</h3>
+        <p>Top-tier SalesCards (90+) get surfaced to vetted recruiters and inbound from companies hiring closers. You stay anonymous until you choose to reveal yourself.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> You choose who sees your card</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Anonymous-by-default browsing for recruiters</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Filter by role, segment, motion, score</li>
+        </ul>
+      </div>
+      <div class="benefit-visual">
+        <svg viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="20" width="320" height="200" rx="12" fill="white" stroke="#E5E7EB"/>
+          <text x="40" y="50" font-family="Inter" font-size="12" font-weight="700" fill="#6B7280" letter-spacing="1">RECRUITER VIEW</text>
+          <rect x="40" y="62" width="80" height="24" rx="12" fill="#EFF6FF" stroke="#DCE9F8"/>
+          <text x="80" y="78" font-family="Inter" font-size="11" font-weight="700" fill="#3478C0" text-anchor="middle">Score ≥ 90</text>
+          <rect x="128" y="62" width="80" height="24" rx="12" fill="#EFF6FF" stroke="#DCE9F8"/>
+          <text x="168" y="78" font-family="Inter" font-size="11" font-weight="700" fill="#3478C0" text-anchor="middle">Senior AE</text>
+          <rect x="216" y="62" width="92" height="24" rx="12" fill="#EFF6FF" stroke="#DCE9F8"/>
+          <text x="262" y="78" font-family="Inter" font-size="11" font-weight="700" fill="#3478C0" text-anchor="middle">Mid-Market</text>
+          <!-- mini result rows -->
+          <g font-family="Inter" font-size="12">
+            <rect x="40" y="106" width="280" height="32" rx="8" fill="#F9FAFB"/>
+            <circle cx="56" cy="122" r="9" fill="#10B981"/><text x="56" y="126" font-size="10" font-weight="900" fill="#0F0F0F" text-anchor="middle">92</text>
+            <text x="74" y="120" font-weight="700" fill="#111827">Rep #4821</text>
+            <text x="74" y="134" font-size="10" fill="#6B7280">Senior AE · 138% quota · $11M pipe</text>
+            <rect x="40" y="146" width="280" height="32" rx="8" fill="white" stroke="#E5E7EB"/>
+            <circle cx="56" cy="162" r="9" fill="#F5B739"/><text x="56" y="166" font-size="10" font-weight="900" fill="#0F0F0F" text-anchor="middle">96</text>
+            <text x="74" y="160" font-weight="700" fill="#111827">Rep #2034</text>
+            <text x="74" y="174" font-size="10" fill="#6B7280">Senior AE · 162% quota · $14M pipe</text>
+            <rect x="40" y="186" width="280" height="20" rx="6" fill="#0F0F0F"/>
+            <text x="180" y="200" font-family="Inter" font-size="11" font-weight="700" fill="#F5B739" text-anchor="middle">REQUEST INTRO</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="benefit-row reverse">
+      <div class="benefit-text">
+        <div class="benefit-tag">Stack rank</div>
+        <h3>See where you actually rank. Not just in your team.</h3>
+        <p>Every quarter, your score is normalized against thousands of SDRs, BDRs, and AEs at companies of every size and segment. If you're top 5% — you'll know. If you're average — you'll know that too.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Percentile vs. role &amp; segment peers</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Quarter-over-quarter trend</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Compare against any role / score band</li>
+        </ul>
+      </div>
+      <div class="benefit-visual">
+        <svg viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="20" width="320" height="200" rx="12" fill="white" stroke="#E5E7EB"/>
+          <text x="40" y="50" font-family="Inter" font-size="12" font-weight="700" fill="#6B7280" letter-spacing="1">YOUR PERCENTILE · SENIOR AE</text>
+          <!-- distribution curve approximation -->
+          <path d="M 40 180 Q 100 180 130 130 T 180 80 T 220 130 T 280 175 T 320 180" stroke="#3478C0" stroke-width="3" fill="rgba(52,120,192,0.15)"/>
+          <line x1="40" y1="180" x2="320" y2="180" stroke="#E5E7EB"/>
+          <text x="40" y="200" font-size="10" fill="#6B7280" font-family="Inter">0</text>
+          <text x="180" y="200" font-size="10" fill="#6B7280" text-anchor="middle" font-family="Inter">50</text>
+          <text x="320" y="200" font-size="10" fill="#6B7280" text-anchor="end" font-family="Inter">100</text>
+          <!-- you marker at ~92 -->
+          <line x1="295" y1="76" x2="295" y2="180" stroke="#10B981" stroke-width="2.5" stroke-dasharray="3 3"/>
+          <rect x="265" y="60" width="60" height="22" rx="11" fill="#10B981"/>
+          <text x="295" y="76" font-family="Inter" font-size="12" font-weight="900" fill="white" text-anchor="middle">YOU · 92</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="benefit-row">
+      <div class="benefit-text">
+        <div class="benefit-tag">Portable</div>
+        <h3>Your record follows you. Forever.</h3>
+        <p>Change jobs. Change CRMs. Change managers. Your SalesCard stays. Eight quarters of receipts you control — not your former employer.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Multi-employer record over your whole career</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> You own and can export everything</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Delete any time — no questions</li>
+        </ul>
+      </div>
+      <div class="benefit-visual">
+        <svg viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="20" width="320" height="200" rx="12" fill="white" stroke="#E5E7EB"/>
+          <text x="40" y="50" font-family="Inter" font-size="12" font-weight="700" fill="#6B7280" letter-spacing="1">CAREER TIMELINE · 2 EMPLOYERS</text>
+          <line x1="40" y1="120" x2="320" y2="120" stroke="#E5E7EB" stroke-width="2"/>
+          <!-- employer 1 -->
+          <rect x="46" y="84" width="120" height="40" rx="6" fill="#EFF6FF" stroke="#3478C0"/>
+          <text x="106" y="102" font-family="Inter" font-size="11" font-weight="900" fill="#3478C0" text-anchor="middle">Acme Corp</text>
+          <text x="106" y="116" font-family="Inter" font-size="10" fill="#3478C0" text-anchor="middle">Q3 24 – Q4 25</text>
+          <!-- employer 2 -->
+          <rect x="180" y="84" width="138" height="40" rx="6" fill="#10B981" stroke="#0F0F0F"/>
+          <text x="249" y="102" font-family="Inter" font-size="11" font-weight="900" fill="white" text-anchor="middle">NEW JOB</text>
+          <text x="249" y="116" font-family="Inter" font-size="10" fill="white" text-anchor="middle">Q1 26 – present</text>
+          <!-- score line -->
+          <path d="M 50 175 L 110 170 L 170 158 L 250 142 L 310 130" stroke="#0F0F0F" stroke-width="2.5" fill="none"/>
+          <circle cx="50" cy="175" r="4" fill="#3478C0"/>
+          <circle cx="170" cy="158" r="4" fill="#3478C0"/>
+          <circle cx="310" cy="130" r="5" fill="#10B981" stroke="#0F0F0F" stroke-width="2"/>
+          <text x="40" y="195" font-family="Inter" font-size="10" fill="#6B7280">Score: 84</text>
+          <text x="320" y="195" font-family="Inter" font-size="10" fill="#0F0F0F" text-anchor="end" font-weight="900">Score: 92</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="benefit-row reverse">
+      <div class="benefit-text">
+        <div class="benefit-tag">Proof</div>
+        <h3>End the "top performer" debate with verified numbers.</h3>
+        <p>Every stat on your card carries a manager- or peer-verification stamp. Recruiters and hiring managers can see exactly what's been signed off — and what hasn't.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Two-click verification (in-app or #verified email)</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Verify by former manager, peer, or RevOps</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Unverified stats stay on the card — at half weight</li>
+        </ul>
+      </div>
+      <div class="benefit-visual">
+        <svg viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="20" width="320" height="200" rx="12" fill="white" stroke="#E5E7EB"/>
+          <text x="40" y="50" font-family="Inter" font-size="12" font-weight="700" fill="#6B7280" letter-spacing="1">VERIFICATION FLOW</text>
+          <g font-family="Inter" font-size="12">
+            <rect x="40" y="66" width="280" height="34" rx="8" fill="#F9FAFB" stroke="#E5E7EB"/>
+            <circle cx="58" cy="83" r="10" fill="#10B981"/>
+            <path d="M 53 83 L 57 87 L 64 79" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <text x="78" y="82" font-weight="700">Q4 25 · $940K Closed-won</text>
+            <text x="78" y="94" font-size="10" fill="#6B7280">Verified by D. Chen · Acme RevOps</text>
+
+            <rect x="40" y="108" width="280" height="34" rx="8" fill="#F9FAFB" stroke="#E5E7EB"/>
+            <circle cx="58" cy="125" r="10" fill="#10B981"/>
+            <path d="M 53 125 L 57 129 L 64 121" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <text x="78" y="124" font-weight="700">Q1 26 · 148% Quota</text>
+            <text x="78" y="136" font-size="10" fill="#6B7280">Verified · reply &num;verified to email</text>
+
+            <rect x="40" y="150" width="280" height="34" rx="8" fill="white" stroke="#E5E7EB"/>
+            <circle cx="58" cy="167" r="10" fill="#E5E7EB"/>
+            <text x="58" y="171" font-size="10" font-weight="900" fill="#6B7280" text-anchor="middle">?</text>
+            <text x="78" y="166" font-weight="700">Q2 26 · $580K Agent pipe</text>
+            <text x="78" y="178" font-size="10" fill="#6B7280">Pending verification · half weight</text>
+
+            <rect x="40" y="193" width="280" height="14" rx="7" fill="#0F0F0F"/>
+            <text x="180" y="203" font-family="Inter" font-size="9" font-weight="700" fill="#F5B739" text-anchor="middle" letter-spacing="1">REQUEST VERIFICATION → 2 CLICKS</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =================== OFFER STACK (Hormozi-style) =================== -->
+<section class="stack-bg" id="signup">
+  <div class="container-tight">
+    <div class="section-eyebrow">The offer</div>
+    <h2 class="section-h2">Here's everything you get when you claim your free SalesCard.</h2>
+    <p class="section-sub">No paywall. No "premium plan." Reps don't pay. Period.</p>
+
+    <div class="stack-card">
+      <div class="stack-item">
+        <div class="stack-label">
+          <span class="stack-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Your public SalesCard profile (front + back)
+        </div>
+        <div class="stack-value">$499/yr value</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-label">
+          <span class="stack-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Verified 8-quarter performance record
+        </div>
+        <div class="stack-value">$299/yr value</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-label">
+          <span class="stack-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Your 1–100 SalesCard Score + tier badge
+        </div>
+        <div class="stack-value">$199/yr value</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-label">
+          <span class="stack-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Peer percentile vs. thousands of reps
+        </div>
+        <div class="stack-value">$299/yr value</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-label">
+          <span class="stack-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Recruiter visibility for top-tier scores (opt-in)
+        </div>
+        <div class="stack-value">$699/yr value</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-label">
+          <span class="stack-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Manager &amp; peer verification flow
+        </div>
+        <div class="stack-value">$199/yr value</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-label">
+          <span class="stack-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Career-portable record across every employer
+        </div>
+        <div class="stack-value">priceless</div>
+      </div>
+
+      <div class="stack-total">
+        <div>
+          <div class="label">Total stack value</div>
+          <div><span class="crossed">$2,194/yr</span></div>
+        </div>
+        <div style="text-align:right;">
+          <div class="your-price">$0</div>
+          <div class="forever">Free, forever</div>
+        </div>
+      </div>
+
+      <div class="stack-cta">
+        <a href="#signup" class="btn btn-xl">Claim my SalesCard &rarr;</a>
+        <p class="stack-risk">
+          No credit card. Delete your card any time. Your data is yours — exportable on demand.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FAQ =================== -->
+<section id="faq">
+  <div class="container-tight">
+    <div class="section-eyebrow">Questions reps actually ask</div>
+    <h2 class="section-h2">Before you upload.</h2>
+    <div class="faq" style="margin-top: 40px;">
+
+      <details class="faq-item">
+        <summary>Is this really free? What's the catch?</summary>
+        <p>Yes, free forever for individual reps. We make money when recruiters and sales orgs license access to the talent pool — and only when reps opt in to be visible. We never charge you, and we never sell your identity.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What if my manager won't verify my numbers?</summary>
+        <p>Peer verification works. So does a former manager, a RevOps partner, or anyone who has line-of-sight to your CRM. Numbers that aren't yet verified still appear on your card — at half weight in your score. Verified numbers carry full weight and get a green check on the card.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is my data private? Who can see it?</summary>
+        <p>Your card is private by default. You control what's public, what's behind an authenticated link, and whether recruiters can find you. You can switch any of these toggles off — or delete your card entirely — in one click.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What if my company forbids sharing performance numbers?</summary>
+        <p>Most "do not share" policies refer to customer data, not your personal performance numbers. That said: you decide what you upload, and unverified data is clearly marked. Many reps share only with verified recruiters under NDA.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>I'm new to sales — can I even claim a card?</summary>
+        <p>Yes. Claim your card on day 1, log your first quarter when it closes, and build the record forward. Reps who start early get a stronger 8-quarter record by the time they're in their first job change.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How is the 1–100 score actually calculated?</summary>
+        <p>70% of the score comes from your absolute outcomes (pipeline $, closed-won $, quota %, win rate, deal size, agent leverage). 30% comes from peer percentile in your role and segment. Verified data counts at full weight; unverified at half. The formula is published and recalculated every quarter.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What if I leave sales for a while and come back?</summary>
+        <p>Your record stays. Reactivate any time. The score gets recalculated when you log your next verified quarter.</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== FINAL CTA =================== -->
+<section class="final-cta">
+  <div class="container-tight">
+    <h2>Stop letting your numbers reset.</h2>
+    <p>Eight quarters. 90 seconds. A verified card that follows you for the rest of your sales career.</p>
+    <a href="#signup" class="btn btn-xl">Claim my SalesCard &rarr;</a>
+    <div style="margin-top: 18px;">
+      <span class="trust">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Free forever</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No credit card</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Delete any time</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><span class="l-blue">Sales</span><span class="l-green">Card</span></div>
+        <p style="margin:0 0 12px; max-width: 280px;">The verified sales record that follows every SDR, BDR, and AE between jobs.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#card">What's on your card</a></li>
+          <li><a href="#signup">Claim your card</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For</h4>
+        <ul>
+          <li><a href="#">SDRs &amp; BDRs</a></li>
+          <li><a href="#">AEs</a></li>
+          <li><a href="#">Recruiters</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div>&copy; 2026 SalesCard. Built for the people who actually carry quota.</div>
+      <div>Made with verified numbers.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
