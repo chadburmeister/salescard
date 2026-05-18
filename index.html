@@ -78,6 +78,52 @@
   .nav-links a{ color: var(--gray-700); font-weight: 500; font-size: 14.5px; }
   .nav-links a:hover{ color: var(--blue); }
   @media (max-width: 720px){ .nav-links .desktop-only{ display:none; } }
+  /* Dropdown */
+  .nav-drop{ position: relative; }
+  .nav-drop-trigger{
+    display: inline-flex; align-items: center; gap: 4px;
+    color: var(--gray-700); font-weight: 500; font-size: 14.5px;
+    cursor: pointer; background: none; border: none; padding: 0;
+    font-family: inherit;
+  }
+  .nav-drop-trigger:hover{ color: var(--blue); }
+  .nav-drop-trigger svg{ transition: transform .15s ease; }
+  .nav-drop:hover .nav-drop-trigger svg,
+  .nav-drop.is-open .nav-drop-trigger svg{ transform: rotate(180deg); }
+  .nav-drop-panel{
+    position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%);
+    min-width: 260px;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 14px;
+    box-shadow: 0 24px 50px -12px rgba(15,15,15,0.18), 0 4px 12px -4px rgba(15,15,15,0.06);
+    padding: 8px;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .15s ease, visibility 0s .15s;
+  }
+  .nav-drop:hover .nav-drop-panel,
+  .nav-drop.is-open .nav-drop-panel{
+    opacity: 1; visibility: visible; pointer-events: auto;
+    transition: opacity .15s ease;
+  }
+  .nav-drop-panel::before{
+    content:""; position: absolute; top: -10px; left: 0; right: 0; height: 10px;
+  }
+  .nav-drop-item{
+    display: block; padding: 12px 14px;
+    border-radius: 10px;
+    transition: background .12s ease;
+  }
+  .nav-drop-item:hover{ background: var(--gray-50); }
+  .nav-drop-item .title{ display:flex; align-items:center; gap: 10px; font-weight: 700; font-size: 14.5px; color: var(--ink); }
+  .nav-drop-item .desc{ display:block; font-size: 12.5px; color: var(--gray-500); margin-top: 4px; margin-left: 26px; line-height:1.4; }
+  .nav-drop-item .pin{
+    width: 16px; height: 16px; border-radius: 4px;
+    display:inline-flex; align-items:center; justify-content:center;
+    color: white; flex-shrink: 0;
+  }
+  .nav-drop-item .pin.blue{ background: var(--blue); }
+  .nav-drop-item .pin.green{ background: var(--green); }
   .btn{
     display: inline-flex; align-items:center; gap: 8px;
     background: var(--blue); color: white;
@@ -481,7 +527,22 @@
   <div class="container nav-inner">
     <a href="#" class="logo"><span class="l-blue">Sales</span><span class="l-green">Card</span></a>
     <div class="nav-links">
-      <a href="#how" class="desktop-only">How it works</a>
+      <div class="nav-drop desktop-only" data-nav-drop>
+        <button class="nav-drop-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+          How it works
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="nav-drop-panel" role="menu">
+          <a href="/" class="nav-drop-item" role="menuitem">
+            <span class="title"><span class="pin blue"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>For Sales Pros</span>
+            <span class="desc">Turn 8 quarters of numbers into a verified, shareable card.</span>
+          </a>
+          <a href="/recruiters.html" class="nav-drop-item" role="menuitem">
+            <span class="title"><span class="pin green"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>For Recruiters</span>
+            <span class="desc">Verify candidate numbers. Search a verified pool. Place faster.</span>
+          </a>
+        </div>
+      </div>
       <a href="#card" class="desktop-only">The card</a>
       <a href="#faq" class="desktop-only">FAQ</a>
       <a href="https://app.salescard.ai" class="btn-ghost">Sign in</a>
@@ -998,7 +1059,7 @@
         <ul>
           <li><a href="#">SDRs &amp; BDRs</a></li>
           <li><a href="#">AEs</a></li>
-          <li><a href="#">Recruiters</a></li>
+          <li><a href="/recruiters.html">Recruiters</a></li>
         </ul>
       </div>
       <div>
@@ -1053,6 +1114,24 @@
 </div>
 
 <script>
+  // ============ NAV DROPDOWN ============
+  document.querySelectorAll('[data-nav-drop]').forEach(drop => {
+    const trigger = drop.querySelector('.nav-drop-trigger');
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const open = drop.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll('[data-nav-drop].is-open').forEach(drop => {
+      if (!drop.contains(e.target)) {
+        drop.classList.remove('is-open');
+        drop.querySelector('.nav-drop-trigger').setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
   // ============ MODAL ============
   const modal = document.getElementById('waitlist-modal');
   const formContainer = document.getElementById('waitlist-form-container');

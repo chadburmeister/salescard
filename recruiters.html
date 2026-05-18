@@ -1,0 +1,1158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SalesCard for Recruiters — Stop shortlisting from adjectives.</title>
+<meta name="description" content="Verify any candidate's last 8 quarters. Search a pool of reps with verified numbers. Place faster, place better — without a single 'top performer' resume claim." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://salescard.ai/recruiters" />
+<meta property="og:title" content="SalesCard for Recruiters — Stop shortlisting from adjectives." />
+<meta property="og:description" content="Verify any candidate's last 8 quarters. Search a verified pool. Place faster." />
+<meta property="og:image" content="https://salescard.ai/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SalesCard for Recruiters — Stop shortlisting from adjectives." />
+<meta name="twitter:description" content="Verify any candidate's last 8 quarters. Search a verified pool. Place faster." />
+<meta name="twitter:image" content="https://salescard.ai/og-image.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --blue: #3478C0;
+    --blue-dk: #1E5A9C;
+    --blue-lt: #5294E0;
+    --blue-bg: #EFF6FF;
+    --black: #0F0F0F;
+    --ink: #111827;
+    --gray-900: #111827;
+    --gray-700: #374151;
+    --gray-500: #6B7280;
+    --gray-400: #9CA3AF;
+    --gray-300: #D1D5DB;
+    --gray-200: #E5E7EB;
+    --gray-100: #F3F4F6;
+    --gray-50: #F9FAFB;
+    --white: #FFFFFF;
+    --gold: #F5B739;
+    --gold-dk: #C98E18;
+    --green: #10B981;
+    --green-dk: #047857;
+    --red: #EF4444;
+    --cream: #F8F5EE;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; max-width:100%; }
+  .container{ max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .container-tight{ max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+  /* ============ NAV ============ */
+  nav{
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; height: 68px; }
+  .logo{ font-weight: 800; font-size: 22px; letter-spacing: -0.02em; }
+  .logo .l-blue{ color: var(--blue); }
+  .logo .l-green{ color: var(--green); }
+  .nav-links{ display:flex; gap: 32px; align-items:center; }
+  .nav-links a{ color: var(--gray-700); font-weight: 500; font-size: 14.5px; }
+  .nav-links a:hover{ color: var(--blue); }
+  @media (max-width: 720px){ .nav-links .desktop-only{ display:none; } }
+  .nav-drop{ position: relative; }
+  .nav-drop-trigger{
+    display: inline-flex; align-items: center; gap: 4px;
+    color: var(--gray-700); font-weight: 500; font-size: 14.5px;
+    cursor: pointer; background: none; border: none; padding: 0;
+    font-family: inherit;
+  }
+  .nav-drop-trigger:hover{ color: var(--blue); }
+  .nav-drop-trigger svg{ transition: transform .15s ease; }
+  .nav-drop:hover .nav-drop-trigger svg,
+  .nav-drop.is-open .nav-drop-trigger svg{ transform: rotate(180deg); }
+  .nav-drop-panel{
+    position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%);
+    min-width: 260px;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 14px;
+    box-shadow: 0 24px 50px -12px rgba(15,15,15,0.18), 0 4px 12px -4px rgba(15,15,15,0.06);
+    padding: 8px;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .15s ease, visibility 0s .15s;
+  }
+  .nav-drop:hover .nav-drop-panel,
+  .nav-drop.is-open .nav-drop-panel{
+    opacity: 1; visibility: visible; pointer-events: auto;
+    transition: opacity .15s ease;
+  }
+  .nav-drop-panel::before{
+    content:""; position: absolute; top: -10px; left: 0; right: 0; height: 10px;
+  }
+  .nav-drop-item{
+    display: block; padding: 12px 14px;
+    border-radius: 10px;
+    transition: background .12s ease;
+  }
+  .nav-drop-item:hover{ background: var(--gray-50); }
+  .nav-drop-item.current{ background: var(--blue-bg); }
+  .nav-drop-item .title{ display:flex; align-items:center; gap: 10px; font-weight: 700; font-size: 14.5px; color: var(--ink); }
+  .nav-drop-item .desc{ display:block; font-size: 12.5px; color: var(--gray-500); margin-top: 4px; margin-left: 26px; line-height:1.4; }
+  .nav-drop-item .pin{
+    width: 16px; height: 16px; border-radius: 4px;
+    display:inline-flex; align-items:center; justify-content:center;
+    color: white; flex-shrink: 0;
+  }
+  .nav-drop-item .pin.blue{ background: var(--blue); }
+  .nav-drop-item .pin.green{ background: var(--green); }
+  .btn{
+    display: inline-flex; align-items:center; gap: 8px;
+    background: var(--blue); color: white;
+    font-weight: 600; font-size: 14.5px;
+    padding: 10px 18px; border-radius: 999px;
+    border:none; cursor: pointer;
+    transition: transform .15s ease, background .15s ease, box-shadow .2s ease;
+    text-decoration: none;
+  }
+  .btn:hover{ background: var(--blue-dk); transform: translateY(-1px); box-shadow: 0 10px 25px -10px rgba(52,120,192,.6); }
+  .btn-lg{ font-size: 16px; padding: 16px 28px; }
+  .btn-xl{ font-size: 17px; padding: 18px 32px; font-weight: 700; }
+  .btn-ghost{ background:transparent; color: var(--gray-700); padding: 10px 14px; }
+  .btn-ghost:hover{ background: var(--gray-100); color: var(--ink); transform:none; box-shadow:none; }
+  .btn-gold{ background: var(--gold); color: var(--black); }
+  .btn-gold:hover{ background: var(--gold-dk); color: var(--black); box-shadow: 0 10px 25px -10px rgba(245,183,57,0.7); }
+
+  /* ============ HERO ============ */
+  .hero{ position: relative; padding: 64px 0 80px; text-align: center; overflow: hidden; }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(16,185,129,0.10), transparent 70%),
+      radial-gradient(40% 30% at 80% 30%, rgba(245,183,57,0.08), transparent 70%);
+    z-index: -1;
+  }
+  .eyebrow{
+    display: inline-flex; align-items:center; gap: 6px;
+    color: var(--green-dk); background: rgba(16,185,129,0.10);
+    border: 1px solid rgba(16,185,129,0.25);
+    padding: 6px 14px; border-radius: 999px;
+    font-size: 13px; font-weight: 600;
+    margin-bottom: 22px; letter-spacing: 0.02em;
+  }
+  .eyebrow .dot{ width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block; }
+  h1.hero-h1{
+    font-size: clamp(40px, 6vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    font-weight: 900;
+    color: var(--ink);
+    margin: 0 0 22px;
+    max-width: 920px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h1.hero-h1 .h1-gray{ color: var(--gray-500); }
+  h1.hero-h1 .h1-green{ color: var(--green); }
+  .hero-sub{
+    color: var(--gray-700);
+    font-size: clamp(16px, 1.6vw, 19px);
+    line-height: 1.55;
+    max-width: 720px;
+    margin: 0 auto 38px;
+  }
+  .hero-cta{ display:flex; justify-content:center; gap: 14px; flex-wrap:wrap; margin-bottom: 16px; }
+  .trust{
+    color: var(--gray-500); font-size: 13.5px;
+    display:inline-flex; align-items:center; gap: 16px;
+    flex-wrap:wrap; justify-content:center;
+  }
+  .trust span{ display:inline-flex; align-items:center; gap:6px; }
+  .trust svg{ flex-shrink:0; color: var(--green); }
+
+  /* ============ SECTION SHARED ============ */
+  section{ padding: 96px 0; }
+  .section-eyebrow{
+    color: var(--blue); font-size: 13px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 14px; text-align:center;
+  }
+  h2.section-h2{
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    font-weight: 800;
+    text-align: center;
+    margin: 0 auto 18px;
+    max-width: 760px;
+  }
+  .section-sub{
+    color: var(--gray-700); font-size: 18px;
+    text-align:center; max-width: 640px;
+    margin: 0 auto 56px;
+  }
+
+  /* ============ PROBLEM STRIP ============ */
+  .problem-strip{ background: var(--black); color: white; padding: 28px 0; }
+  .problem-strip .container{ display:flex; align-items:center; justify-content:center; gap: 28px; flex-wrap: wrap; }
+  .problem-strip .stat{ color: var(--gray-400); font-size: 14px; }
+  .problem-strip .stat b{ color: var(--gold); font-weight: 700; }
+  .problem-strip .divider{ color: var(--gray-700); }
+
+  /* ============ PROBLEM GRID ============ */
+  .problem-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 880px){ .problem-grid{ grid-template-columns: 1fr; } }
+  .prob-card{
+    background: white; border: 1px solid var(--gray-200);
+    border-radius: 16px; padding: 32px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .prob-card:hover{ transform: translateY(-4px); box-shadow: 0 24px 40px -20px rgba(15,15,15,0.12); }
+  .prob-icon{
+    width: 44px; height: 44px;
+    background: rgba(239, 68, 68, 0.10); color: var(--red);
+    border-radius: 12px;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom: 16px;
+  }
+  .prob-card h3{ font-size: 19px; margin: 0 0 10px; font-weight: 700; letter-spacing: -0.01em; }
+  .prob-card p{ color: var(--gray-700); margin: 0; font-size: 15.5px; }
+
+  /* ============ HOW IT WORKS ============ */
+  .how-bg{ background: var(--gray-50); }
+  .steps{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 880px){ .steps{ grid-template-columns: 1fr; } }
+  .step{ background: white; border-radius: 16px; padding: 36px; border: 1px solid var(--gray-200); position: relative; }
+  .step-num{
+    width: 36px; height: 36px; background: var(--black); color: var(--gold);
+    border-radius: 999px;
+    display:flex; align-items:center; justify-content:center;
+    font-weight: 900; font-family: 'JetBrains Mono', monospace;
+    font-size: 15px; margin-bottom: 18px;
+  }
+  .step h3{ font-size: 19px; margin: 0 0 8px; font-weight: 700; }
+  .step p{ color: var(--gray-700); margin: 0; font-size: 15px; }
+  .step-meta{
+    display: inline-block; margin-top: 14px; font-size: 12.5px;
+    color: var(--green-dk); background: rgba(16,185,129,0.10);
+    padding: 4px 10px; border-radius: 999px; font-weight: 600;
+  }
+
+  /* ============ OFFER STACK ============ */
+  .stack-bg{ background: var(--black); color: white; }
+  .stack-bg h2.section-h2{ color: white; }
+  .stack-bg .section-eyebrow{ color: var(--gold); }
+  .stack-bg .section-sub{ color: var(--gray-400); }
+  .stack-card{
+    max-width: 780px; margin: 0 auto;
+    background: #161922;
+    border: 1px solid #2A2F3B;
+    border-radius: 24px;
+    padding: 40px 44px;
+    box-shadow: 0 50px 80px -30px rgba(0,0,0,0.5);
+  }
+  @media (max-width: 640px){
+    .stack-card{ padding: 28px 22px; }
+  }
+  .stack-item{
+    display:flex; align-items:flex-start; justify-content:space-between;
+    padding: 18px 0;
+    border-bottom: 1px solid #2A2F3B;
+    gap: 16px;
+  }
+  .stack-item:last-of-type{ border-bottom: 0; }
+  .stack-label{ display:flex; align-items:flex-start; gap: 14px; color: white; font-size: 16px; font-weight: 500; flex: 1; }
+  .stack-label .body{ display:block; }
+  .stack-label .body small{ display:block; color: var(--gray-400); font-size: 13.5px; font-weight: 400; margin-top: 4px; }
+  .stack-check{
+    width: 22px; height: 22px;
+    background: rgba(16, 185, 129, 0.15); color: var(--green);
+    border-radius: 999px;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .stack-value{ font-family: 'JetBrains Mono', monospace; color: var(--gray-400); font-size: 14.5px; white-space: nowrap; margin-top: 2px; }
+  .stack-value.gold{ color: var(--gold); font-weight: 700; }
+  .stack-total{
+    margin-top: 16px; padding: 22px 28px;
+    border-radius: 14px;
+    background: linear-gradient(90deg, rgba(16,185,129,0.10), rgba(245,183,57,0.10));
+    border: 1px solid #2A2F3B;
+    display:flex; align-items:center; justify-content:space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .stack-total .label{ font-size: 14px; color: var(--gray-400); }
+  .stack-total .crossed{ color: var(--gray-500); text-decoration: line-through; font-weight: 600; font-size: 18px; margin-right: 6px; }
+  .stack-total .your-price{ font-weight: 900; font-size: 30px; color: white; letter-spacing: -0.02em; }
+  .stack-total .save{ color: var(--green); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ============ PRICING ============ */
+  .pricing-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 920px; margin: 0 auto; }
+  @media (max-width: 760px){ .pricing-grid{ grid-template-columns: 1fr; } }
+  .price-card{
+    background: white;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 22px;
+    padding: 36px 32px;
+    display:flex; flex-direction: column;
+    position: relative;
+  }
+  .price-card.featured{
+    border-color: var(--green);
+    box-shadow: 0 36px 60px -28px rgba(16,185,129,0.30);
+    transform: translateY(-4px);
+  }
+  .price-card .ribbon{
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--green); color: white;
+    font-size: 12px; font-weight: 800;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 999px;
+    white-space: nowrap;
+  }
+  .price-name{ font-size: 14px; font-weight: 800; color: var(--blue); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+  .price-tag{ font-size: 16px; color: var(--gray-500); margin-bottom: 18px; }
+  .price-amount{ font-size: clamp(40px, 4.5vw, 56px); font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin: 0 0 6px; }
+  .price-amount .per{ font-size: 17px; color: var(--gray-500); font-weight: 600; letter-spacing: 0; margin-left: 4px; }
+  .price-sub{ color: var(--gray-700); font-size: 14.5px; margin-bottom: 24px; min-height: 22px; }
+  .price-features{ list-style:none; padding:0; margin: 0 0 28px; flex:1; }
+  .price-features li{ display:flex; gap: 10px; padding: 9px 0; color: var(--gray-700); font-size: 15px; }
+  .price-features li svg{ flex-shrink:0; color: var(--green); margin-top: 4px; }
+  .price-cta{ display: inline-flex; align-items:center; justify-content:center; gap: 8px; width: 100%; padding: 16px; border-radius: 14px; font-weight: 800; font-size: 16px; transition: all .15s ease; cursor: pointer; border: none; font-family: inherit; }
+  .price-cta.primary{ background: var(--blue); color: white; }
+  .price-cta.primary:hover{ background: var(--blue-dk); transform: translateY(-1px); }
+  .price-cta.featured{ background: var(--green); color: white; }
+  .price-cta.featured:hover{ background: var(--green-dk); transform: translateY(-1px); }
+  .billing-toggle{
+    display: inline-flex; align-items: center; gap: 4px;
+    background: var(--gray-100); border-radius: 999px;
+    padding: 4px; margin: 0 auto 36px; text-align:center;
+  }
+  .billing-toggle-row{ text-align:center; }
+  .billing-toggle button{
+    border: none; background: transparent;
+    padding: 8px 18px; border-radius: 999px;
+    font-size: 14px; font-weight: 600; color: var(--gray-700);
+    cursor: pointer; font-family: inherit;
+    transition: all .15s ease;
+  }
+  .billing-toggle button.active{ background: white; color: var(--ink); box-shadow: 0 1px 3px rgba(15,15,15,0.08); }
+  .billing-save-tag{
+    display: inline-block; margin-left: 10px;
+    background: rgba(245,183,57,0.15); color: var(--gold-dk);
+    font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 999px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  /* ============ GUARANTEE ============ */
+  .guarantee{
+    background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(245,183,57,0.06));
+    border-top: 1px solid var(--gray-200);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 80px 0;
+  }
+  .guarantee-box{
+    max-width: 780px; margin: 0 auto;
+    background: white;
+    border: 2px solid var(--gold);
+    border-radius: 22px;
+    padding: 44px 48px;
+    text-align:center;
+    box-shadow: 0 30px 60px -30px rgba(245,183,57,0.4);
+  }
+  @media (max-width: 640px){ .guarantee-box{ padding: 30px 24px; } }
+  .guarantee-seal{
+    width: 88px; height: 88px; margin: 0 auto 20px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 4px solid var(--gold-dk);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 8px 20px -6px rgba(245,183,57,0.6);
+  }
+  .guarantee-seal svg{ color: var(--black); }
+  .guarantee h2{
+    font-size: clamp(26px, 3.4vw, 36px);
+    font-weight: 900; letter-spacing: -0.025em; line-height: 1.1;
+    margin: 0 0 16px;
+  }
+  .guarantee p{ color: var(--gray-700); font-size: 17px; max-width: 580px; margin: 0 auto; line-height: 1.6; }
+  .guarantee p strong{ color: var(--ink); }
+
+  /* ============ COMPARISON ============ */
+  .compare-bg{ background: var(--gray-50); }
+  .compare-table{
+    max-width: 920px; margin: 0 auto;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px -24px rgba(15,15,15,0.10);
+  }
+  .compare-row{
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    padding: 18px 28px;
+    border-bottom: 1px solid var(--gray-100);
+    align-items: center;
+    font-size: 15px;
+    gap: 14px;
+  }
+  .compare-row:last-child{ border-bottom: none; }
+  .compare-row.header{
+    background: var(--gray-50);
+    font-weight: 800; font-size: 13px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--gray-700);
+  }
+  .compare-row .cell{ text-align:center; }
+  .compare-row .cell.label{ text-align:left; color: var(--gray-700); }
+  .compare-row .cell.salescard{ font-weight: 700; color: var(--green-dk); }
+  .compare-row .cell.other{ color: var(--gray-500); }
+  .compare-row .check{ color: var(--green); }
+  .compare-row .cross{ color: var(--red); }
+  @media (max-width: 720px){
+    .compare-row{ grid-template-columns: 1fr 80px 80px; padding: 14px 16px; font-size: 13.5px; }
+  }
+
+  /* ============ FAQ ============ */
+  .faq{ max-width: 760px; margin: 0 auto; }
+  details.faq-item{
+    background: white; border: 1px solid var(--gray-200);
+    border-radius: 14px; margin-bottom: 12px;
+    padding: 20px 24px; transition: border-color .2s ease;
+  }
+  details.faq-item[open]{ border-color: var(--blue); background: var(--gray-50); }
+  details.faq-item summary{
+    list-style: none; cursor: pointer;
+    font-weight: 600; font-size: 16.5px; color: var(--ink);
+    display:flex; align-items:center; justify-content:space-between; gap: 16px;
+  }
+  details.faq-item summary::-webkit-details-marker{ display:none; }
+  details.faq-item summary::after{
+    content:"+"; color: var(--blue); font-weight: 700;
+    font-size: 24px; line-height: 1;
+    transition: transform .2s ease;
+    width: 22px; text-align: center;
+  }
+  details.faq-item[open] summary::after{ content:"−"; }
+  details.faq-item p{ margin: 14px 0 0; color: var(--gray-700); font-size: 15.5px; line-height: 1.6; }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta{
+    background: linear-gradient(180deg, var(--white) 0%, rgba(16,185,129,0.08) 100%);
+    text-align:center; padding: 100px 0;
+  }
+  .final-cta h2{
+    font-size: clamp(34px, 5vw, 56px); line-height: 1.05;
+    letter-spacing: -0.03em; font-weight: 900;
+    margin: 0 0 18px;
+  }
+  .final-cta p{ color: var(--gray-700); font-size: 18px; max-width: 580px; margin: 0 auto 36px; }
+
+  /* ============ FOOTER ============ */
+  footer{ background: var(--black); color: var(--gray-400); padding: 56px 0 36px; font-size: 14px; }
+  .foot-grid{ display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 44px; }
+  @media (max-width: 720px){ .foot-grid{ grid-template-columns: 1fr 1fr; } }
+  footer h4{
+    color: white; font-size: 13px; text-transform: uppercase;
+    letter-spacing: 0.1em; margin: 0 0 14px; font-weight: 700;
+  }
+  footer ul{ list-style:none; padding:0; margin:0; }
+  footer li{ margin-bottom: 8px; }
+  footer a:hover{ color: white; }
+  .foot-bot{ border-top: 1px solid #1F2937; padding-top: 28px; display:flex; justify-content:space-between; gap: 16px; flex-wrap:wrap; }
+  .foot-logo{ font-weight: 900; font-size: 22px; margin-bottom: 12px; }
+  .foot-logo .l-blue{ color: var(--blue-lt); }
+  .foot-logo .l-green{ color: var(--green); }
+
+  /* ============ MODAL ============ */
+  .modal-backdrop{
+    position: fixed; inset: 0;
+    background: rgba(15,15,15,0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 100;
+    display: none;
+    align-items: center; justify-content: center;
+    padding: 20px;
+    animation: fadeIn .2s ease;
+  }
+  .modal-backdrop.is-open{ display: flex; }
+  @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+  .modal{
+    background: white;
+    border-radius: 24px;
+    padding: 40px 36px;
+    max-width: 520px; width: 100%;
+    box-shadow: 0 50px 80px -30px rgba(0,0,0,0.4);
+    position: relative;
+    animation: slideUp .25s ease;
+  }
+  @keyframes slideUp { from { transform: translateY(20px); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+  .modal-close{
+    position: absolute; top: 14px; right: 16px;
+    background: transparent; border: none;
+    width: 32px; height: 32px;
+    cursor: pointer; color: var(--gray-500);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .modal-close:hover{ background: var(--gray-100); color: var(--ink); }
+  .modal-eyebrow{
+    color: var(--green-dk); font-weight: 700; font-size: 12px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .modal h2{
+    font-size: 28px; line-height: 1.15;
+    letter-spacing: -0.02em; font-weight: 900;
+    margin: 0 0 12px;
+  }
+  .modal p{ color: var(--gray-700); margin: 0 0 24px; font-size: 15.5px; }
+  .modal form{ display: flex; flex-direction: column; gap: 12px; }
+  .modal input, .modal select{
+    width: 100%; padding: 14px 16px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 12px;
+    font-size: 16px; font-family: inherit;
+    transition: border-color .15s ease;
+    background: white;
+  }
+  .modal input:focus, .modal select:focus{ outline: none; border-color: var(--blue); }
+  .modal button[type=submit]{
+    width: 100%; padding: 14px 18px;
+    background: var(--blue); color: white;
+    border: none; border-radius: 12px;
+    font-size: 16px; font-weight: 700;
+    cursor: pointer;
+    transition: background .15s ease, transform .15s ease;
+  }
+  .modal button[type=submit]:hover{ background: var(--blue-dk); transform: translateY(-1px); }
+  .modal button[type=submit]:disabled{ opacity: 0.6; cursor: not-allowed; transform: none; }
+  .modal .modal-foot{ font-size: 12.5px; color: var(--gray-500); margin-top: 14px; text-align: center; }
+  .modal-success{ text-align: center; padding: 20px 0 10px; }
+  .modal-success .check{
+    width: 56px; height: 56px;
+    background: rgba(16,185,129,0.15); color: var(--green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px;
+  }
+  .modal-success h3{ font-size: 22px; margin: 0 0 8px; font-weight: 900; }
+  .modal-success p{ margin: 0; color: var(--gray-700); }
+  .modal-error{ color: var(--red); font-size: 13.5px; margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<!-- =================== NAV =================== -->
+<nav>
+  <div class="container nav-inner">
+    <a href="/" class="logo"><span class="l-blue">Sales</span><span class="l-green">Card</span></a>
+    <div class="nav-links">
+      <div class="nav-drop desktop-only" data-nav-drop>
+        <button class="nav-drop-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+          How it works
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="nav-drop-panel" role="menu">
+          <a href="/" class="nav-drop-item" role="menuitem">
+            <span class="title"><span class="pin blue"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>For Sales Pros</span>
+            <span class="desc">Turn 8 quarters of numbers into a verified, shareable card.</span>
+          </a>
+          <a href="/recruiters.html" class="nav-drop-item current" role="menuitem">
+            <span class="title"><span class="pin green"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>For Recruiters</span>
+            <span class="desc">Verify candidate numbers. Search a verified pool. Place faster.</span>
+          </a>
+        </div>
+      </div>
+      <a href="#pricing" class="desktop-only">Pricing</a>
+      <a href="#faq" class="desktop-only">FAQ</a>
+      <a href="https://app.salescard.ai" class="btn-ghost">Sign in</a>
+      <a href="#" class="btn" data-open-recruiter>Reserve a seat</a>
+    </div>
+  </div>
+</nav>
+
+<!-- =================== HERO =================== -->
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow"><span class="dot"></span>Built for sales recruiters &amp; talent leaders</span>
+    <h1 class="hero-h1">
+      Stop shortlisting from <span class="h1-gray">adjectives.</span><br>
+      <span class="h1-green">Start shortlisting from receipts.</span>
+    </h1>
+    <p class="hero-sub">
+      Every candidate says they're "top 10%." None of them can prove it. SalesCard lets you verify any rep's last 8 quarters — closed-won, quota attainment, win rate, pipeline — straight from their managers. Search a pool of pre-verified reps. Place the right one in days, not weeks.
+    </p>
+    <div class="hero-cta">
+      <a href="#pricing" class="btn btn-xl">See pricing &amp; book a seat &rarr;</a>
+      <a href="#how" class="btn btn-ghost btn-lg">How it works</a>
+    </div>
+    <div class="trust">
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        60-day money-back guarantee
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        No per-placement fees
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Cancel anytime
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- =================== PROBLEM STRIP =================== -->
+<div class="problem-strip">
+  <div class="container">
+    <span class="stat"><b>73%</b> of new sales hires miss quota in year one.</span>
+    <span class="divider">·</span>
+    <span class="stat">A bad sales hire costs <b>~$115,000</b>.</span>
+    <span class="divider">·</span>
+    <span class="stat">Every resume says <b>"top performer."</b></span>
+  </div>
+</div>
+
+<!-- =================== PROBLEM =================== -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Why hiring sales reps is broken</div>
+    <h2 class="section-h2">Three problems killing your placement rate.</h2>
+    <p class="section-sub">
+      You're being asked to find the top 10% from a pool where every candidate self-rates 9 out of 10. The numbers on the resume aren't real until someone verifies them — and right now, no one does.
+    </p>
+    <div class="problem-grid">
+      <div class="prob-card">
+        <div class="prob-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+        </div>
+        <h3>Resumes are creative writing</h3>
+        <p>"President's Club." "Consistently overachieved." "Top 5% nationally." Every rep says it. Your hiring manager believes none of it. You spend the next two weeks chasing references that won't return your call.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Searching LinkedIn is a coin toss</h3>
+        <p>LinkedIn shows you titles. Titles don't tell you who actually carries quota and who just shows up. There's no "filter for top quintile by attainment" button. So you reach out to 200 people to interview 20 to place 1.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+        </div>
+        <h3>Bad hires bury you</h3>
+        <p>One mis-placement costs your client ~$115K and your reputation a year of trust. You can't afford to keep guessing. You need a tool that turns "trust me, I'm a closer" into a number a hiring manager will sign off on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== HOW IT WORKS =================== -->
+<section id="how" class="how-bg">
+  <div class="container">
+    <div class="section-eyebrow">How it works</div>
+    <h2 class="section-h2">Three steps from "maybe" to verified placement.</h2>
+    <p class="section-sub">No CRM access. No employer involvement. Just verified numbers, signed off by real managers and peers.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Search the verified pool</h3>
+        <p>Filter by role, segment, region, quota attainment, win rate, deal size. Every rep in the pool has uploaded at least 8 quarters of real numbers. Most are already manager-verified.</p>
+        <span class="step-meta">Live and growing</span>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Trigger one-click verification</h3>
+        <p>For any candidate, request manager or peer confirmation in a single click. The rep's prior manager gets an email, confirms the quarters, and the card updates in real time. You see the receipt.</p>
+        <span class="step-meta">Avg response: &lt; 48 hrs</span>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Export a hiring-manager scorecard</h3>
+        <p>Send your client a one-page verified scorecard — score, tier, sub-grades, eight quarters of attainment, who verified what. They sign off in minutes instead of weeks.</p>
+        <span class="step-meta">Cuts time-to-offer ~40%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== VALUE STACK =================== -->
+<section class="stack-bg">
+  <div class="container-tight">
+    <div class="section-eyebrow">What you get</div>
+    <h2 class="section-h2">Everything you need to place verified reps. Nothing you don't.</h2>
+    <p class="section-sub">
+      Priced item-by-item against tools you're probably stitching together today.
+    </p>
+
+    <div class="stack-card">
+      <div class="stack-item">
+        <div class="stack-label">
+          <div class="stack-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="body">Unlimited verifications across any candidate's last 8 quarters<small>Trigger manager- and peer-confirmation for every rep on your shortlist, with no per-request cost.</small></div>
+        </div>
+        <div class="stack-value">$10,000 / yr value</div>
+      </div>
+
+      <div class="stack-item">
+        <div class="stack-label">
+          <div class="stack-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="body">Unlimited search of the verified rep pool<small>Filter on quota attainment, win rate, deal size, segment, region, tenure. Saved searches with alerts.</small></div>
+        </div>
+        <div class="stack-value">$4,800 / yr value</div>
+      </div>
+
+      <div class="stack-item">
+        <div class="stack-label">
+          <div class="stack-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="body">One-click verified scorecard exports for hiring managers<small>Hand your client a one-pager with score, tier, sub-grades, and verifier names. No more chasing back-channel references.</small></div>
+        </div>
+        <div class="stack-value">$1,200 / yr value</div>
+      </div>
+
+      <div class="stack-item">
+        <div class="stack-label">
+          <div class="stack-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="body">Direct messaging to any verified rep<small>Skip InMail credits. Message reps directly through the platform. They see your "verified recruiter" badge.</small></div>
+        </div>
+        <div class="stack-value">$3,600 / yr value</div>
+      </div>
+
+      <div class="stack-item">
+        <div class="stack-label">
+          <div class="stack-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="body">Free hiring-manager seats for your clients<small>Invite your client's VP Sales or hiring manager to view shortlists with you. Cuts approval cycles in half.</small></div>
+        </div>
+        <div class="stack-value">$2,400 / yr value</div>
+      </div>
+
+      <div class="stack-item">
+        <div class="stack-label">
+          <div class="stack-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="body">Quarter-over-quarter trend analysis<small>See who's accelerating vs. plateauing. Surface reps who quietly closed $1M+ for three quarters straight.</small></div>
+        </div>
+        <div class="stack-value">$1,500 / yr value</div>
+      </div>
+
+      <div class="stack-item">
+        <div class="stack-label">
+          <div class="stack-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="body">Founding Recruiter badge + priority in rep search<small>Reps see your messages first. Your verified-recruiter status puts you above LinkedIn cold outreach in their inbox.</small></div>
+        </div>
+        <div class="stack-value gold">Priceless</div>
+      </div>
+
+      <div class="stack-item">
+        <div class="stack-label">
+          <div class="stack-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="body">White-glove onboarding<small>We import your active pipeline, set up your saved searches, and train your team. One-on-one in your first week.</small></div>
+        </div>
+        <div class="stack-value">$500 value</div>
+      </div>
+
+      <div class="stack-total">
+        <div>
+          <div class="label">Total value if bought separately</div>
+          <div><span class="crossed">$24,000+ / yr</span></div>
+        </div>
+        <div style="text-align:right;">
+          <div class="save">Solo Recruiter</div>
+          <div class="your-price">$3,000<span style="font-size:16px;color:var(--gray-400);font-weight:600;letter-spacing:0;">/ year</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== PRICING =================== -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-eyebrow">Pricing</div>
+    <h2 class="section-h2">Two ways to verify. Pick one.</h2>
+    <p class="section-sub">No per-placement fees. No commission clawbacks. No surprise tiers. Place as many as you want.</p>
+
+    <div class="pricing-grid">
+      <!-- Solo -->
+      <div class="price-card">
+        <div class="price-name">Solo Recruiter</div>
+        <div class="price-tag">For independent sales recruiters &amp; small agencies.</div>
+        <div class="price-amount">$249<span class="per">/ month</span></div>
+        <div class="price-sub">or <strong>$3,000 / year</strong> &mdash; lock the rate for 12 months</div>
+        <ul class="price-features">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>One recruiter seat</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Unlimited verifications across 8 quarters</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Unlimited search of the verified rep pool</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Verified scorecard exports (PDF)</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Direct messaging to verified reps</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>3 free hiring-manager seats</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>White-glove onboarding</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>60-day money-back guarantee</li>
+        </ul>
+        <button class="price-cta primary" data-open-recruiter data-plan="solo">Get a Solo seat &rarr;</button>
+      </div>
+
+      <!-- Team -->
+      <div class="price-card featured">
+        <div class="ribbon">Most popular</div>
+        <div class="price-name" style="color: var(--green-dk);">Team (5 seats)</div>
+        <div class="price-tag">For agencies and in-house talent teams.</div>
+        <div class="price-amount">$10,000<span class="per">/ year</span></div>
+        <div class="price-sub"><strong>$2,000 per seat</strong> &mdash; 33% off vs. Solo</div>
+        <ul class="price-features">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><strong>Up to 5 recruiter seats</strong></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Everything in Solo, for every seat</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Shared candidate boards &amp; notes</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><strong>10 free hiring-manager seats</strong></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Team-level analytics &amp; placement reporting</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Priority verification turnaround</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Dedicated success manager</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>60-day money-back guarantee</li>
+        </ul>
+        <button class="price-cta featured" data-open-recruiter data-plan="team">Get the Team plan &rarr;</button>
+      </div>
+    </div>
+    <p style="text-align:center; color: var(--gray-500); font-size: 14px; margin-top: 36px;">
+      Need more than 5 seats? <a href="#" data-open-recruiter data-plan="enterprise" style="color: var(--blue); font-weight: 600;">Talk to us &rarr;</a>
+    </p>
+  </div>
+</section>
+
+<!-- =================== GUARANTEE =================== -->
+<section class="guarantee">
+  <div class="container">
+    <div class="guarantee-box">
+      <div class="guarantee-seal">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2 L4 6 v6 c0 5 3.5 9 8 10 4.5-1 8-5 8-10 V6 z" />
+          <polyline points="9 12 11 14 15 10" />
+        </svg>
+      </div>
+      <h2>The 60-day &ldquo;place one or pay nothing&rdquo; guarantee.</h2>
+      <p>
+        Run SalesCard for 60 days. If you don&apos;t put at least <strong>three verified candidates</strong> in front of your clients in that window, we&apos;ll refund <strong>every dollar</strong> — annual or monthly — no questions, no exit forms, no calls to retain you. You either find better reps faster, or this didn&apos;t cost you a thing.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== COMPARISON =================== -->
+<section class="compare-bg">
+  <div class="container">
+    <div class="section-eyebrow">vs. the tools you're using now</div>
+    <h2 class="section-h2">LinkedIn Recruiter shows you titles. SalesCard shows you receipts.</h2>
+    <p class="section-sub">Most recruiters are stitching together three tools to get a fraction of what SalesCard does. Here's the side-by-side.</p>
+
+    <div class="compare-table">
+      <div class="compare-row header">
+        <div class="cell label">Feature</div>
+        <div class="cell">SalesCard</div>
+        <div class="cell">LinkedIn Recruiter</div>
+      </div>
+      <div class="compare-row">
+        <div class="cell label">Manager-verified quota attainment</div>
+        <div class="cell salescard"><svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="cell other"><svg class="cross" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+      </div>
+      <div class="compare-row">
+        <div class="cell label">Filter by win rate, deal size, pipeline</div>
+        <div class="cell salescard"><svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="cell other"><svg class="cross" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+      </div>
+      <div class="compare-row">
+        <div class="cell label">One-click verification request</div>
+        <div class="cell salescard"><svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="cell other"><svg class="cross" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+      </div>
+      <div class="compare-row">
+        <div class="cell label">Exportable scorecard for hiring managers</div>
+        <div class="cell salescard"><svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="cell other"><svg class="cross" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+      </div>
+      <div class="compare-row">
+        <div class="cell label">Direct messaging to candidates</div>
+        <div class="cell salescard"><svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="cell other">Limited (InMail)</div>
+      </div>
+      <div class="compare-row">
+        <div class="cell label">Annual cost (1 seat)</div>
+        <div class="cell salescard">$3,000</div>
+        <div class="cell other">$10,800+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FAQ =================== -->
+<section id="faq">
+  <div class="container">
+    <div class="section-eyebrow">Honest answers</div>
+    <h2 class="section-h2">The questions every recruiter asks before signing up.</h2>
+    <p class="section-sub">If yours isn&apos;t here, email <a href="mailto:hello@salescard.ai" style="color: var(--blue);">hello@salescard.ai</a>.</p>
+
+    <div class="faq">
+      <details class="faq-item" open>
+        <summary>Where do the verified numbers come from?</summary>
+        <p>Reps upload eight quarters of stats themselves. Then they invite their former managers, peer reps, or RevOps partners to confirm each quarter via email. Confirmed quarters carry full weight in the score; unverified quarters carry half. You see exactly who confirmed what and when.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How big is the verified pool right now?</summary>
+        <p>We&apos;re in early access. We&apos;re onboarding the first 1,000 reps and the first 25 recruiters together so the pool is dense at launch. Reach out and we&apos;ll show you who&apos;s already in your target segment.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What if a verification gets flagged as inaccurate?</summary>
+        <p>The verifier can mark a quarter as wrong. You see the flag immediately on the candidate&apos;s card, and so does the candidate. We never quietly hide flagged data — the whole point of the platform is that you see receipts, including bad ones.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can my hiring managers see verified cards?</summary>
+        <p>Yes. Solo includes 3 free hiring-manager seats; Team includes 10. They get read-only access to candidates you&apos;ve shortlisted and can sign off on shortlists in the same place you&apos;re working.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is there a per-placement fee or commission share?</summary>
+        <p>No. Pay your subscription, place as many candidates as you want. We don&apos;t take any cut of your fees.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How are reps incentivized to join?</summary>
+        <p>It&apos;s free forever for reps. Their card is portable — between jobs, on LinkedIn, in DMs to recruiters. We pull the demand side (you), and they show up for the same reason every sales rep wants a verified scoreboard: it travels with them.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What&apos;s the refund policy?</summary>
+        <p>60 days, no questions. If you don&apos;t put at least three verified candidates in front of your clients during that window, email us and we refund every dollar — annual or monthly, doesn&apos;t matter.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FINAL CTA =================== -->
+<section class="final-cta">
+  <div class="container-tight">
+    <h2>Stop building shortlists from adjectives.</h2>
+    <p>You can keep guessing which "top performer" is actually a top performer — or you can verify it in 48 hours and ship the placement. Founding 25 recruiters get locked-in pricing for life.</p>
+    <a href="#" class="btn btn-xl" data-open-recruiter>Reserve a recruiter seat &rarr;</a>
+    <div style="margin-top: 18px;">
+      <span class="trust">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 60-day refund</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No per-placement fees</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Cancel anytime</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><span class="l-blue">Sales</span><span class="l-green">Card</span></div>
+        <p style="margin:0 0 12px; max-width: 280px;">The verified sales record that follows every SDR, BDR, and AE between jobs.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/">For Sales Pros</a></li>
+          <li><a href="/recruiters.html">For Recruiters</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For</h4>
+        <ul>
+          <li><a href="/">SDRs &amp; BDRs</a></li>
+          <li><a href="/">AEs</a></li>
+          <li><a href="/recruiters.html">Recruiters</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="mailto:hello@salescard.ai">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div>&copy; 2026 SalesCard. Built for the people who actually carry quota — and the recruiters who place them.</div>
+      <div>Made with verified numbers.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- =================== RECRUITER MODAL =================== -->
+<div class="modal-backdrop" id="recruiter-modal" role="dialog" aria-modal="true" aria-labelledby="recruiter-title">
+  <div class="modal">
+    <button class="modal-close" aria-label="Close" data-close-recruiter>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div id="recruiter-form-container">
+      <div class="modal-eyebrow">Founding 25 recruiters · Locked-in pricing</div>
+      <h2 id="recruiter-title">Reserve your seat.</h2>
+      <p>We&apos;re onboarding the first 25 recruiters one-on-one. Tell us where you work and which plan you want — we&apos;ll set up your seat, import your active pipeline, and lock the rate for as long as you stay.</p>
+      <form id="recruiter-form" novalidate>
+        <input type="text" name="name" placeholder="Your name" required autocomplete="name" />
+        <input type="email" name="email" placeholder="Work email" required autocomplete="email" />
+        <input type="text" name="company" placeholder="Agency or company" autocomplete="organization" />
+        <select name="plan" id="recruiter-plan">
+          <option value="solo">Solo Recruiter — $3,000 / yr</option>
+          <option value="team">Team — $10,000 / yr (5 seats)</option>
+          <option value="enterprise">More than 5 seats — talk to us</option>
+        </select>
+        <button type="submit" id="recruiter-submit">Reserve my seat &rarr;</button>
+        <div class="modal-error" id="recruiter-error" style="display:none;"></div>
+      </form>
+      <div class="modal-foot">
+        We&apos;ll be in touch within one business day. No payment until your seat is set up.
+      </div>
+    </div>
+
+    <div id="recruiter-success" style="display:none;">
+      <div class="modal-success">
+        <div class="check">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Seat reserved.</h3>
+        <p>Check your inbox &mdash; we sent a confirmation. A founding-recruiter onboarder will be in touch within one business day to set up your seat.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ============ NAV DROPDOWN ============
+  document.querySelectorAll('[data-nav-drop]').forEach(drop => {
+    const trigger = drop.querySelector('.nav-drop-trigger');
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const open = drop.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll('[data-nav-drop].is-open').forEach(drop => {
+      if (!drop.contains(e.target)) {
+        drop.classList.remove('is-open');
+        drop.querySelector('.nav-drop-trigger').setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // ============ MODAL ============
+  const modal = document.getElementById('recruiter-modal');
+  const formContainer = document.getElementById('recruiter-form-container');
+  const successContainer = document.getElementById('recruiter-success');
+  const form = document.getElementById('recruiter-form');
+  const submitBtn = document.getElementById('recruiter-submit');
+  const errorEl = document.getElementById('recruiter-error');
+  const planSelect = document.getElementById('recruiter-plan');
+
+  function openModal(plan){
+    formContainer.style.display = 'block';
+    successContainer.style.display = 'none';
+    errorEl.style.display = 'none';
+    if (plan && planSelect) planSelect.value = plan;
+    modal.classList.add('is-open');
+    setTimeout(() => form.querySelector('input[name=name]').focus(), 50);
+  }
+  function closeModal(){ modal.classList.remove('is-open'); }
+
+  document.querySelectorAll('[data-open-recruiter]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const plan = el.getAttribute('data-plan') || '';
+      openModal(plan);
+    });
+  });
+  document.querySelectorAll('[data-close-recruiter]').forEach(el => {
+    el.addEventListener('click', closeModal);
+  });
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorEl.style.display = 'none';
+
+    const data = new FormData(form);
+    const name    = (data.get('name')    || '').toString().trim();
+    const email   = (data.get('email')   || '').toString().trim();
+    const company = (data.get('company') || '').toString().trim();
+    const plan    = (data.get('plan')    || '').toString().trim();
+
+    if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      errorEl.textContent = 'Please enter a valid email.';
+      errorEl.style.display = 'block';
+      return;
+    }
+    if (!name) {
+      errorEl.textContent = 'Please enter your name.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Saving...';
+
+    try {
+      const res = await fetch('/api/recruiter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, company, plan, source: 'recruiters-page' }),
+      });
+      if (!res.ok) {
+        // Fall back to waitlist endpoint if /api/recruiter not deployed yet
+        const fallback = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, role: `Recruiter (${plan})`, name, company }),
+        });
+        if (!fallback.ok) {
+          const body = await fallback.json().catch(() => ({}));
+          throw new Error(body.error || 'Something went wrong. Try again?');
+        }
+      }
+      formContainer.style.display = 'none';
+      successContainer.style.display = 'block';
+    } catch (err) {
+      errorEl.textContent = err.message || 'Something went wrong. Try again?';
+      errorEl.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Reserve my seat →';
+    }
+  });
+</script>
+
+<!-- Vercel Analytics -->
+<script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>
