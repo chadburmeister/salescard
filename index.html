@@ -732,16 +732,19 @@
   </div>
 </section>
 
-<!-- =================== THE CARD ANATOMY =================== -->
+<!-- =================== THE CARD ANATOMY (front + back) =================== -->
 <section id="card">
   <div class="container">
     <div class="section-eyebrow">What's on your card</div>
-    <h2 class="section-h2">Every number that matters. Verified.</h2>
-    <p class="section-sub">Front shows who you are. Back shows what you've done — quarter by quarter, eight straight.</p>
-    <div class="anatomy">
-      <div class="anatomy-grid">
-        <div>
-          <svg viewBox="0 0 460 640" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 20px 30px rgba(15,15,15,0.15)); width:100%;">
+    <h2 class="section-h2">The front says who. The back proves it.</h2>
+    <p class="section-sub">Front shows your score and grade at a glance. The back is the receipt &mdash; eight verified quarters, quarter by quarter.</p>
+    <div class="fb-grid">
+
+      <!-- ===== FRONT ===== -->
+      <div class="fb-face">
+        <span class="fb-tag">Front</span>
+        <div class="fb-cardwrap">
+          <svg viewBox="0 0 460 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SalesCard front for Morgan Lee, ELITE 92">
             <rect x="0" y="0" width="460" height="640" rx="18" fill="#DDDCD3" stroke="#B8B6AC" stroke-width="2"/>
             <rect x="14" y="14" width="432" height="612" rx="6" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="0.5"/>
             <rect x="14" y="14" width="432" height="9" fill="#10B981"/>
@@ -754,6 +757,7 @@
               <text x="30" y="112" fill="#B8B8B8" letter-spacing="0.4">QUOTA</text><text x="116" y="112" fill="#FFFFFF">9.6</text>
               <text x="150" y="112" fill="#B8B8B8" letter-spacing="0.4">TENURE</text><text x="232" y="112" fill="#FFFFFF">8.8</text>
             </g>
+            <text x="30" y="136" font-family="JetBrains Mono, monospace" font-size="10" fill="#888888">0024 9201</text>
             <rect x="285" y="34" width="78" height="102" fill="#10B981"/>
             <text x="324" y="84" font-family="Inter" font-size="38" font-weight="900" fill="#0F0F0F" text-anchor="middle">92</text>
             <text x="324" y="110" font-family="Inter" font-size="11" font-weight="900" fill="#0F0F0F" text-anchor="middle" letter-spacing="0.8">ELITE</text>
@@ -776,16 +780,113 @@
             <text x="230" y="600" font-family="Inter" font-size="22" font-weight="900" fill="#FFFFFF" text-anchor="middle">MORGAN LEE</text>
             <text x="230" y="618" font-family="Inter" font-size="11" font-weight="900" fill="#F5B739" text-anchor="middle" letter-spacing="2">SENIOR AE</text>
           </svg>
+          <span class="fb-pin" style="left:70%; top:13%;">1</span>
+          <span class="fb-pin" style="left:87%; top:14%;">2</span>
+          <span class="fb-pin" style="left:26%; top:16%;">3</span>
+          <span class="fb-pin" style="left:33%; top:83%;">4</span>
         </div>
-        <ul class="callout-list">
-          <li><b>Tier badge.</b> A color-coded grade everyone can read at a glance. Gold (95+), Green (90–94), Blue (80–89), Red (&lt;80).</li>
-          <li><b>1–100 SalesCard Score.</b> A single number, role-normalized, peer-weighted, verified.</li>
-          <li><b>4 sub-grades.</b> Pipeline, Win Rate, Quota, Tenure. Each scored 1–10. Like Beckett, for closers.</li>
-          <li><b>VERIFIED 10 panel.</b> Manager- or peer-verified. The whole point.</li>
-          <li><b>Public LinkedIn link.</b> Your card lives on a URL you can drop in any DM, email, or job app.</li>
-          <li><b>Back of the card.</b> Eight quarters of closed-won, quota %, pipeline, deal size, agents managed — plus a scout report.</li>
+        <ul class="fb-callouts">
+          <li><span class="fb-num">1</span><span><b>1&ndash;100 SalesCard Score + tier.</b> The headline grade &mdash; role-normalized, peer-weighted, verified.</span></li>
+          <li><span class="fb-num">2</span><span><b>VERIFIED panel.</b> Manager- or peer-signed. The whole point of the card.</span></li>
+          <li><span class="fb-num">3</span><span><b>Four sub-grades.</b> Pipeline, Win Rate, Quota, Tenure &mdash; each scored 1&ndash;10.</span></li>
+          <li><span class="fb-num">4</span><span><b>Public link.</b> Your card lives on a URL you can drop in any DM or job app.</span></li>
         </ul>
       </div>
+
+      <!-- ===== BACK ===== -->
+      <div class="fb-face">
+        <span class="fb-tag">Back</span>
+        <div class="fb-cardwrap">
+          <svg viewBox="0 0 460 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SalesCard back for Morgan Lee — eight-quarter record">
+            <rect x="0" y="0" width="460" height="640" rx="18" fill="#DDDCD3" stroke="#B8B6AC" stroke-width="2"/>
+            <rect x="14" y="14" width="432" height="612" rx="6" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="0.5"/>
+            <rect x="14" y="14" width="432" height="9" fill="#10B981"/>
+
+            <rect x="14" y="23" width="432" height="70" fill="#0F0F0F"/>
+            <text x="30" y="52" font-family="Inter" font-size="18" font-weight="900" fill="#FFFFFF">MORGAN LEE</text>
+            <text x="30" y="74" font-family="Inter" font-size="10" font-weight="800" fill="#F5B739" letter-spacing="2">SENIOR AE · MID-MARKET</text>
+            <rect x="370" y="33" width="60" height="48" rx="4" fill="#10B981"/>
+            <text x="400" y="62" font-family="Inter" font-size="22" font-weight="900" fill="#0F0F0F" text-anchor="middle">92</text>
+            <text x="400" y="74" font-family="Inter" font-size="7" font-weight="900" fill="#0F0F0F" text-anchor="middle" letter-spacing="0.5">ELITE</text>
+
+            <text x="30" y="118" font-family="Inter" font-size="11" font-weight="900" fill="#0F0F0F" letter-spacing="1.2">8-QUARTER VERIFIED RECORD</text>
+            <text x="430" y="118" font-family="Inter" font-size="9" font-weight="800" fill="#3478C0" text-anchor="end" letter-spacing="0.5">TOP 8% · SENIOR AE</text>
+
+            <g font-family="Inter" font-size="9" font-weight="800" fill="#9CA3AF" letter-spacing="0.4">
+              <text x="30" y="140">QTR</text>
+              <text x="215" y="140" text-anchor="end">QUOTA</text>
+              <text x="350" y="140" text-anchor="end">CLOSED-WON</text>
+              <text x="415" y="140" text-anchor="middle">VER</text>
+            </g>
+            <line x1="30" y1="148" x2="430" y2="148" stroke="#E5E7EB" stroke-width="1"/>
+
+            <g font-family="Inter" font-size="12">
+              <text x="30" y="170" font-weight="600" fill="#111827">CY24</text>
+              <text x="215" y="170" font-weight="700" fill="#047857" text-anchor="end">121%</text>
+              <text x="350" y="170" font-weight="600" fill="#111827" text-anchor="end">$2.9M</text>
+              <circle cx="415" cy="166" r="7" fill="#10B981"/><path d="M411 166 l3 3 l5 -6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+              <text x="30" y="198" font-weight="600" fill="#111827">Q1 25</text>
+              <text x="215" y="198" font-weight="700" fill="#047857" text-anchor="end">138%</text>
+              <text x="350" y="198" font-weight="600" fill="#111827" text-anchor="end">$0.8M</text>
+              <circle cx="415" cy="194" r="7" fill="#10B981"/><path d="M411 194 l3 3 l5 -6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+              <text x="30" y="226" font-weight="600" fill="#111827">Q2 25</text>
+              <text x="215" y="226" font-weight="700" fill="#047857" text-anchor="end">112%</text>
+              <text x="350" y="226" font-weight="600" fill="#111827" text-anchor="end">$0.7M</text>
+              <circle cx="415" cy="222" r="7" fill="#10B981"/><path d="M411 222 l3 3 l5 -6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+              <text x="30" y="254" font-weight="600" fill="#111827">Q3 25</text>
+              <text x="215" y="254" font-weight="700" fill="#047857" text-anchor="end">129%</text>
+              <text x="350" y="254" font-weight="600" fill="#111827" text-anchor="end">$0.9M</text>
+              <circle cx="415" cy="250" r="7" fill="#10B981"/><path d="M411 250 l3 3 l5 -6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+              <text x="30" y="282" font-weight="600" fill="#111827">Q4 25</text>
+              <text x="215" y="282" font-weight="700" fill="#047857" text-anchor="end">146%</text>
+              <text x="350" y="282" font-weight="600" fill="#111827" text-anchor="end">$1.1M</text>
+              <circle cx="415" cy="278" r="7" fill="#10B981"/><path d="M411 278 l3 3 l5 -6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+              <text x="30" y="310" font-weight="600" fill="#111827">Q1 26</text>
+              <text x="215" y="310" font-weight="700" fill="#0F0F0F" text-anchor="end">134%</text>
+              <text x="350" y="310" font-weight="600" fill="#111827" text-anchor="end">$0.9M</text>
+              <circle cx="415" cy="306" r="7" fill="#E5E7EB"/><text x="415" y="310" font-size="9" font-weight="900" fill="#9CA3AF" text-anchor="middle">?</text>
+            </g>
+
+            <line x1="30" y1="324" x2="430" y2="324" stroke="#0F0F0F" stroke-width="1.5"/>
+            <g font-family="Inter" font-size="12" font-weight="900" fill="#0F0F0F">
+              <text x="30" y="344">TOTAL</text>
+              <text x="215" y="344" text-anchor="end">130% avg</text>
+              <text x="350" y="344" text-anchor="end">$7.3M</text>
+            </g>
+
+            <rect x="30" y="360" width="190" height="26" rx="13" fill="#ECFDF5" stroke="#10B981" stroke-width="1"/>
+            <circle cx="46" cy="373" r="7" fill="#10B981"/><path d="M42 373 l3 3 l5 -6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="60" y="377" font-family="Inter" font-size="11" font-weight="800" fill="#047857" letter-spacing="0.3">VERIFIED BY 3 CONTACTS</text>
+
+            <rect x="30" y="398" width="400" height="100" rx="8" fill="#F9FAFB" stroke="#E5E7EB"/>
+            <text x="44" y="420" font-family="Inter" font-size="9" font-weight="800" fill="#6B7280" letter-spacing="1">SCOUT REPORT</text>
+            <text x="44" y="444" font-family="Inter" font-size="11.5" fill="#374151" font-style="italic">Eight straight quarters above quota. Mid-market closer</text>
+            <text x="44" y="462" font-family="Inter" font-size="11.5" fill="#374151" font-style="italic">with $7.3M lifetime closed-won and 130% average</text>
+            <text x="44" y="480" font-family="Inter" font-size="11.5" fill="#374151" font-style="italic">attainment. Verified by 3 independent managers.</text>
+
+            <rect x="14" y="566" width="432" height="60" fill="#0F0F0F"/>
+            <rect x="14" y="566" width="432" height="6" fill="#10B981"/>
+            <text x="230" y="600" font-family="Inter" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">salescard.ai/u/morgan-lee</text>
+            <text x="230" y="618" font-family="Inter" font-size="9" font-weight="800" fill="#F5B739" text-anchor="middle" letter-spacing="2">SERIES 1 · VERIFIED RECORD</text>
+          </svg>
+          <span class="fb-pin green" style="left:33%; top:18%;">5</span>
+          <span class="fb-pin green" style="left:45%; top:31%;">6</span>
+          <span class="fb-pin green" style="left:27%; top:58%;">7</span>
+          <span class="fb-pin green" style="left:52%; top:69%;">8</span>
+        </div>
+        <ul class="fb-callouts green">
+          <li><span class="fb-num">5</span><span><b>Eight-quarter record.</b> Every quarter laid out &mdash; not a one-line resume bullet.</span></li>
+          <li><span class="fb-num">6</span><span><b>% of Quota column.</b> Attainment quarter over quarter, where the score is earned.</span></li>
+          <li><span class="fb-num">7</span><span><b>Verified-by count.</b> Independent managers and peers who signed off on the numbers.</span></li>
+          <li><span class="fb-num">8</span><span><b>Scout report.</b> The one-paragraph summary recruiters read first.</span></li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
