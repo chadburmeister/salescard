@@ -72,8 +72,9 @@
   }
   .nav-inner{ display:flex; align-items:center; justify-content:space-between; height: 68px; }
   .logo{ font-weight: 800; font-size: 22px; letter-spacing: -0.02em; }
-  .logo .l-blue{ color: var(--blue); }
-  .logo .l-green{ color: var(--green); }
+  .logo{ display:inline-flex; align-items:center; }
+  .logo .l-blue{ color:#0A66C2; }
+  .logo .l-box{ background:#0A66C2; color:#fff; font-size:0.86em; border-radius:0.2em; padding:0.11em 0.24em 0.13em; margin-left:0.07em; }
   .nav-links{ display:flex; gap: 32px; align-items:center; }
   .nav-links a{ color: var(--gray-700); font-weight: 500; font-size: 14.5px; }
   .nav-links a:hover{ color: var(--blue); }
@@ -541,8 +542,9 @@
   footer a:hover{ color: white; }
   .foot-bot{ border-top: 1px solid #1F2937; padding-top: 28px; display:flex; justify-content:space-between; gap: 16px; flex-wrap:wrap; }
   .foot-logo{ font-weight: 900; font-size: 22px; margin-bottom: 12px; }
-  .foot-logo .l-blue{ color: var(--blue-lt); }
-  .foot-logo .l-green{ color: var(--green); }
+  .foot-logo{ display:inline-flex; align-items:center; }
+  .foot-logo .l-blue{ color:#fff; }
+  .foot-logo .l-box{ background:#fff; color:#0A66C2; font-size:0.86em; border-radius:0.2em; padding:0.11em 0.24em 0.13em; margin-left:0.07em; }
 
   /* ============ MODAL ============ */
   .modal-backdrop{
@@ -627,7 +629,7 @@
 <!-- =================== NAV =================== -->
 <nav>
   <div class="container nav-inner">
-    <a href="/" class="logo"><span class="l-blue">Sales</span><span class="l-green">Card</span></a>
+    <a href="/" class="logo"><span class="l-blue">Sales</span><span class="l-box">Card</span></a>
     <div class="nav-links">
       <div class="nav-drop desktop-only" data-nav-drop>
         <button class="nav-drop-trigger" type="button" aria-haspopup="true" aria-expanded="false">
@@ -1045,7 +1047,7 @@
   <div class="container">
     <div class="foot-grid">
       <div>
-        <div class="foot-logo"><span class="l-blue">Sales</span><span class="l-green">Card</span></div>
+        <div class="foot-logo"><span class="l-blue">Sales</span><span class="l-box">Card</span></div>
         <p style="margin:0 0 12px; max-width: 280px;">The verified sales record that follows every SDR, BDR, and AE between jobs.</p>
       </div>
       <div>
