@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /landing-update-v2/
+
+Sitemap: https://salescard.ai/sitemap.xml

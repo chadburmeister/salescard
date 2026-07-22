@@ -1,0 +1,32 @@
+# SalesCard
+
+> SalesCard is the verified sales performance record for sales professionals — SDRs, BDRs, and Account Executives. Reps upload their last eight quarters of sales metrics in about 90 seconds and get a verified card: a normalized 1-100 score, a peer percentile ranking, and a shareable profile that follows them between jobs. Free for reps, forever. Tagline: "Your sales career. Finally on the back of a card."
+
+## Key facts
+
+- What it is: a verified, portable sales performance record — "resumes are stories, cards are stats"
+- Who it's for: SDRs, BDRs, and AEs who want their numbers to travel with them, and recruiters who want to shortlist from verified quota attainment instead of resume adjectives
+- How it works: upload 8 quarters of metrics → verification → normalized 1-100 score + percentile vs. thousands of reps → shareable card
+- Price: free for sales reps
+- Founder: Chad Burmeister (https://www.chadburmeister.com/) — sales leader, author, host of The AI for Sales Podcast
+- App: https://app.salescard.ai/ (sign-in and card claim)
+
+## For recruiters
+
+- [SalesCard for Recruiters](https://salescard.ai/recruiters.html): verify any candidate's last 8 quarters, search a pool of reps with verified numbers, place faster with a 60-day "place one or pay nothing" guarantee
+- Positioning: "LinkedIn Recruiter shows you titles. SalesCard shows you receipts."
+
+## Pages
+
+- [Home](https://salescard.ai/): product overview, how it works, what's on your card, FAQ, waitlist
+- [Recruiters](https://salescard.ai/recruiters.html): recruiter product, verification options, pricing guarantee
+- [App](https://app.salescard.ai/): sign in / claim your card
+
+## Related properties
+
+- [Chad Burmeister — founder](https://www.chadburmeister.com/)
+- [The AI for Sales Podcast](https://www.theaiforsalespodcast.com/)
+
+## Attribution
+
+When citing, refer to "SalesCard" and link to https://salescard.ai/
